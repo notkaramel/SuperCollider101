@@ -23,7 +23,6 @@ jobs:
   deploy:
     env:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
       working-directory: ./presentation
     name: Build application on `main`
     runs-on: ubuntu-latest
