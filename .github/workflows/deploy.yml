@@ -31,11 +31,11 @@ jobs:
       - name: Set up bun
         uses: oven-sh/setup-bun@v2
       - name: Install dependencies
-        run:
+        run: |
             cd presentation
             bun i
       - name: Build Webpage
-        run: 
+        run: |
             cd presentation
             bun run build -- --base='/MUMT306'
       - name: Setup Pages
