@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: bun i
       - name: Build Webpage
-        run: bun run build -- --base='/MUMT-306'
+        run: bun run build -- --base='/MUMT306'
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload Page artifact to GitHub Pages
