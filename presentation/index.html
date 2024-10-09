@@ -28,10 +28,10 @@
                     <br>
                     <span><a href="#/step-5"> Signal Processing </a></span> -
                     <span><a href="#/step-6"> Envelope </a></span> -
-                    <span><a href="#/step-7"> Pan </a></span> -
+                    <span><a href="#/step-7"> Output & Pan </a></span> -
                     <span><a href="#/step-8"> Timbre </a></span>
                     <br>
-                    <span><a href="#/step-9"> ? </a></span> -
+                    <span><a href="#/step-9"> Server & OSC </a></span> -
                 </p>
             </section>
             <section id="step-1">
@@ -39,7 +39,7 @@
                 <hr>
                 <h3>
                     <a href="https://supercollider.github.io/downloads.html" target="_blank">
-                        Downloads SuperCollider here!
+                        Download SuperCollider here!
                     </a>
                 </h3>
                 <p><i>Available on Windows, Linux, MacOS</i></p>
@@ -102,24 +102,75 @@
             </section>
 
             <section id="step-4">
-                <h2> Step 4 <hr> <code>Synth</code> & <code>SynthDef</code></h2>
+                <h2> Step 4
+                    <hr> <code>Synth</code> & <code>SynthDef</code>
+                </h2>
                 <blockquote> It's OOP time! </blockquote>
             </section>
 
             <section id="step-5">
-                <h2> Step 5 <hr> <i>Signal Processing Basics</i></h2>
+                <section>
+                    <h2> Step 5
+                        <hr> <i>Signal Processing Basics</i>
+                    </h2>
+                </section>
+                <section>
+                    <h2> 5.1. Important functions </h2>
+                    \[\begin{aligned}
+                    x_{sin} &amp; = \sin{(2\pi\omega+\theta)} \\
+                    x_{env} &amp; = \rho x - y - xz \\
+                    x_{pulse} &amp; = -\beta z + xy
+                    \end{aligned} \]
+                </section>
+                <section>
+                    <h2> 5.2. Modulation </h2>
+                    <p> Amplitude (AM) </p>
+                    \[\begin{aligned}
+                    x_{sin} &amp; = \sin{(2\pi\omega+\theta)} \\
+                    \end{aligned} \]
+                    <p> Frequency (FM) </p>
+                    \[\begin{aligned}
+                    x_{sin} &amp; = \sin{(2\pi\omega+\theta)} \\
+                    \end{aligned} \]
+                </section>
+                <section>
+                    <h2> 5.3. Convolution </h2>
+                    \[\begin{aligned}
+                    x_{sin} &amp; = \sin{(2\pi\omega+\theta)} \\
+                    \end{aligned} \]
+                </section>
             </section>
 
             <section id="step-6">
-                <h2> Step 6 <hr> <i>Let's make a note!</i></h2>
-                <blockquote> Envelope ✉️ </blockquote>
-                <!-- Using Envelope function -->
+                <section>
+                    <h2> Step 6
+                        <hr> <i>Let's make a note!</i>
+                    </h2>
+                    <blockquote> Envelope ✉️ </blockquote>
+                </section>
+                <section>
+                    Using Envelope function
+                </section>
             </section>
 
             <section id="step-7">
-                <h2> Step 6 <hr> <i>Let's make a note!</i></h2>
-                <blockquote> Envelope ✉️ </blockquote>
-                <!-- Using Envelope function -->
+                <h2> Step 7
+                    <hr>
+                </h2>
+                <h3><i> Output channel & Panning </i></h3>
+                <blockquote> 🎶 I can feel you over here~ 🎶 </blockquote>
+            </section>
+
+            <section id="step-8">
+                <h2> Step 8
+                    <hr> <b> Timbre </b>
+                </h2>
+            </section>
+
+            <section id="step-9">
+                <h2> Step 9
+                    <hr> <b> SC Server | OSC </b>
+                </h2>
             </section>
         </div>
     </div>

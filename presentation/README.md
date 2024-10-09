@@ -1,7 +1,6 @@
-# Presentation
-- Built with Bun, Vite, and Reveal.js
+# Presentation Outline
+> Built with Bun, Vite, and Reveal.js
 
-# Outline
 ## Step 1: Install SuperCollider
 - Link: https://supercollider.github.io/downloads.html
 
@@ -9,11 +8,21 @@
 - Introduction/Live Demo to the IDE
 
 ## Step 3: SuperCollider Basics
+- `SinOsc` to make a sine wave
+- `{ SinOsc }` to make a function
+- `{ SinOsc }.play` to play the note
+
+- Variable:
+    - `x` single character, not recommended because there are reserved/default variable (`s` for server)
+    - `~blahblah` can follow any naming convention, very flexible
 
 ## Step 4: Synth & SynthDef
+- Create a synth with name. It's like a `Class` in OOP concepts
+- `args`
 
 ## Step 5: Signal Processing
-- Additive wave
+- Sin wave, Noise, ... in convolution
+- Modulation: AM, FM
 
 ## Step 6: Envelope
 - Adding an envelope function to the signal to create a note
@@ -25,4 +34,17 @@
 ## Step 8: Timbre
 - Start sectioning the workshops into different timbre sections
 
-## Step 9: ?
+## Step 9: SC Server, OSC ✨
+- How SC Server communicate with SC Client and synthesize audio (Architecture)
+- OSC message basics
+- Network Port
+- Booting up the server
+
+## Step 10: Setup
+- Remote server
+-
+
+## Step 11: Perform
+- Orchestrate the workshop
+
+## Step 12: Record
