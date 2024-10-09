@@ -15,17 +15,111 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                Slide 1
+                <h2>
+                    Collaborative Sound Creation Project
+                </h2>
+                <i>✨ using Open Sound Control (OSC) ✨</i>
+                <hr>
+                <p>
+                    <span><a href="#/step-1"> Install </a></span> -
+                    <span><a href="#/step-2"> Getting Started </a></span> -
+                    <span><a href="#/step-3"> SC Basics </a></span> -
+                    <span><a href="#/step-4"> Synth </a></span>
+                    <br>
+                    <span><a href="#/step-5"> Signal Processing </a></span> -
+                    <span><a href="#/step-6"> Envelope </a></span> -
+                    <span><a href="#/step-7"> Pan </a></span> -
+                    <span><a href="#/step-8"> Timbre </a></span>
+                    <br>
+                    <span><a href="#/step-9"> ? </a></span> -
+                </p>
             </section>
-            <section data-markdown>
+            <section id="step-1">
+                <h2> Step 1: Install </h2>
+                <hr>
+                <h3>
+                    <a href="https://supercollider.github.io/downloads.html" target="_blank">
+                        Downloads SuperCollider here!
+                    </a>
+                </h3>
+                <p><i>Available on Windows, Linux, MacOS</i></p>
+            </section>
+
+            <section data-markdown id="step-2">
                 <textarea data-template>
-                  ## Slide 1
-                  A paragraph with some text and a [link](https://hakim.se).
-                  ---
-                  ## Slide 2
-                  ---
-                  ## Slide 3
+                    ## Step 2: Getting started
+                    -----
+                    For more indepth introduction, check out this <br>
+                    [Getting Started tutorial!](https://doc.sccode.org/Tutorials/Getting-Started/00-Getting-Started-With-SC.html)
                 </textarea>
+            </section>
+            <section id="step-3">
+                <section>
+                    <h2> Step 3: SC Basics </h2>
+                    <hr>
+                    <p> Let's start with making a sinusoid wave! </p>
+                    <code>
+                        { SinOsc.ar(440, 0, 0.2) }.play;
+                    </code>
+                </section>
+                <section>
+                    <p> 3.1. Create a <code>SinOsc</code> object with the params: </p>
+                    <code>
+                        SinOsc.ar(440, 0, 0.2);
+                    </code>
+                    <p>
+                        You can always check the documentation:
+                    </p>
+                    <img src="./media/SinOsc.png" alt="SinOsc methods">
+                </section>
+                <section>
+                    <p>
+                        3.2. Wrap the oscillator with curly brackets. <br>
+                        You now have a <code>Function</code>
+                    </p>
+                    <code>
+                        { SinOsc.ar(440, 0, 0.2) };
+                    </code>
+                </section>
+                <section>
+                    <p>
+                        3.3. You can add <code>.play</code> to play the <code>Function</code> to make it play the sound!
+                    </p>
+                    <code>
+                        { SinOsc.ar(440, 0, 0.2) }.play;
+                    </code>
+                </section>
+                <section>
+                    <p>
+                        3.4. Press <code>Ctrl Enter</code> or <code>Cmd Enter</code>
+                        with the cursor on the line to play the sine wave
+                    </p>
+                    <code>
+                        { SinOsc.ar(440, 0, 0.2) }.play;
+                    </code>
+                    <p> It's a pure A4 signal! </p>
+                </section>
+            </section>
+
+            <section id="step-4">
+                <h2> Step 4 <hr> <code>Synth</code> & <code>SynthDef</code></h2>
+                <blockquote> It's OOP time! </blockquote>
+            </section>
+
+            <section id="step-5">
+                <h2> Step 5 <hr> <i>Signal Processing Basics</i></h2>
+            </section>
+
+            <section id="step-6">
+                <h2> Step 6 <hr> <i>Let's make a note!</i></h2>
+                <blockquote> Envelope ✉️ </blockquote>
+                <!-- Using Envelope function -->
+            </section>
+
+            <section id="step-7">
+                <h2> Step 6 <hr> <i>Let's make a note!</i></h2>
+                <blockquote> Envelope ✉️ </blockquote>
+                <!-- Using Envelope function -->
             </section>
         </div>
     </div>
