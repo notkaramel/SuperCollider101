@@ -34,17 +34,13 @@
 ## Step 8: Timbre
 - Start sectioning the workshops into different timbre sections
 
-## Step 9: SC Server, OSC ✨
+## Step 9: SC Server, OSC ✨, Workshop Setup
 - How SC Server communicate with SC Client and synthesize audio (Architecture)
 - OSC message basics
-- Network Port
+- (Local) Network Port
 - Booting up the server
 
-## Step 10: Setup
-- Remote server
--
-
-## Step 11: Perform
+## Step 10: Let's start!
 - Orchestrate the workshop
 
-## Step 12: Record
+## Step 11: Perform & Record

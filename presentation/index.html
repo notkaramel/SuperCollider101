@@ -15,24 +15,38 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <h2>
-                    Collaborative Sound Creation Project
-                </h2>
-                <i>✨ using Open Sound Control (OSC) ✨</i>
-                <hr>
-                <p>
-                    <span><a href="#/step-1"> Install </a></span> -
-                    <span><a href="#/step-2"> Getting Started </a></span> -
-                    <span><a href="#/step-3"> SC Basics </a></span> -
-                    <span><a href="#/step-4"> Synth </a></span>
-                    <br>
-                    <span><a href="#/step-5"> Signal Processing </a></span> -
-                    <span><a href="#/step-6"> Envelope </a></span> -
-                    <span><a href="#/step-7"> Output & Pan </a></span> -
-                    <span><a href="#/step-8"> Timbre </a></span>
-                    <br>
-                    <span><a href="#/step-9"> Server & OSC </a></span> -
-                </p>
+                <section>
+                    <h2>
+                        Collaborative Sound Creation Project
+                    </h2>
+                    <hr>
+                    <i>✨ with Open Sound Control (OSC) ✨</i>
+                </section>
+                <section>
+                    <h3> Sections </h3>
+                    <hr>
+                    <p>
+                        <span><a href="#/step-1"> 1. Install </a></span> ~
+                        <span><a href="#/step-2"> 2. Getting Started </a></span>
+                        <br>
+                        <span><a href="#/step-3"> 3. SC Basics </a></span> ~
+                        <span><a href="#/step-4"> 4. Synth & SynthDef </a></span>
+                        <br>
+                        <span><a href="#/step-5"> 5. Signal Processing </a></span> ~
+                        <span><a href="#/step-6"> 6. Envelope </a></span>
+                        <br>
+                        <span><a href="#/step-7"> 7. Output & Pan </a></span> ~
+                        <span><a href="#/step-8"> 8. Timbre </a></span>
+                        <br>
+                        <span><a href="#/step-9"> 9. Server, OSC, Workshop setup </a></span>
+                        <br>
+                        <span>
+                            <i>
+                                <a href="#/step-10"> 🌟 Performance 🌟 </a>
+                            </i>
+                        </span>
+                    </p>
+                </section>
             </section>
             <section id="step-1">
                 <h2> Step 1: Install </h2>
@@ -89,6 +103,7 @@
                         { SinOsc.ar(440, 0, 0.2) }.play;
                     </code>
                 </section>
+
                 <section>
                     <p>
                         3.4. Press <code>Ctrl Enter</code> or <code>Cmd Enter</code>
@@ -98,6 +113,32 @@
                         { SinOsc.ar(440, 0, 0.2) }.play;
                     </code>
                     <p> It's a pure A4 signal! </p>
+
+                    <div class="fragment">
+                        <hr>
+                        <i>Oh and, <code>Ctrl B</code> / <code> Cmd B</code> to start the SC local server!</i>
+                    </div>
+                </section>
+                <section>
+                    <p>
+                        3.5. Press <code>Ctrl .</code> or <code>Cmd .</code>
+                        to stop the audio playing
+                    </p>
+                    <code>
+                        { SinOsc.ar(440, 0, 0.2) }.play;
+                    </code>
+                </section>
+                <section>
+                    <h4>
+                        3.6. Variables
+                    </h4>
+                    <p>
+                        <code> a = {...} </code> single character, not recommended because there are reserved/default
+                        variable (`s` for server)
+                    </p>
+                    <p>
+                        <code>~blahblah</code> can follow any naming convention, very flexible
+                    </p>
                 </section>
             </section>
 
@@ -165,12 +206,51 @@
                 <h2> Step 8
                     <hr> <b> Timbre </b>
                 </h2>
+                <blockquote> Grouping time?! </blockquote>
             </section>
 
             <section id="step-9">
-                <h2> Step 9
-                    <hr> <b> SC Server | OSC </b>
-                </h2>
+                <section>
+                    <h2> Step 9
+                    </h2>
+                    <hr>
+                    <p><i> SC Server, OSC message, Workshop setup </i></p>
+                </section>
+                <section>
+                    <!-- OSC Message to server, then to speaker -->
+                    <img src="./media/ArchitecturalFlow.png" alt="How the OSC message are sent">
+                </section>
+                <section>
+                    <h3> Workshop setup </h3>
+                </section>
+                <section>
+                    <img src="./media/WorkshopSetup.png" alt="Workshop setup in 4 main section">
+                </section>
+                <section>
+                    <img src="./media/TimbreGroupsToServer.png" alt="How each timbre group is connecting to the server">
+                </section>
+            </section>
+
+            <section id="step-10">
+                <section>
+                    <h1> Let's start! </h1>
+                    <p class="fragment"> or at least, let's try! </p>
+                </section>
+                <section>
+                    <h1>
+                        <span class="fragment fade-in-then-out"> 3 </span>
+                        <span class="fragment fade-in-then-out"> 2 </span>
+                        <span class="fragment fade-in-then-out"> 1 </span>
+                    </h1>
+                </section>
+                <section data-transition="fade-in slide-out"
+                    data-background-gradient="linear-gradient(to bottom, #ccffcc, #9999ff)">
+                    <h2> 🎶 </h2>
+                </section>
+            </section>
+
+            <section id="step-11">
+                <h2> Let's record this session </h2>
             </section>
         </div>
     </div>
