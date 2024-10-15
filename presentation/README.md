@@ -16,6 +16,10 @@
     - `x` single character, not recommended because there are reserved/default variable (`s` for server)
     - `~blahblah` can follow any naming convention, very flexible
 
+- `UGen`
+    - `ar`: Audio rate, the data is produced/output values 44100 or 48000 times per second. Use this for sound production.
+    - `kr`: Control rate, the data is produced a value every 64 samples, using less CPU. We use this to control or shape other `Ugen`s.
+
 ## Step 4: Synth & SynthDef
 - Create a synth with name. It's like a `Class` in OOP concepts
 - `args`
