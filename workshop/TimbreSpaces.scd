@@ -14,7 +14,7 @@ SynthDef(\sineNote, {
 }).add;
 )
 
-Synth(\sineNote);
+Synth(\sineNote, [\freq, 440]);
 
 (
 SynthDef(\timbreA, {
@@ -26,7 +26,7 @@ SynthDef(\timbreA, {
 	// ~envFunc = Env.new(levels: [0, 1, 0.9, 0], times: [0.1, 0.5, 4], curve: [-5, 0, -5]);
 	var envFunc = Env.perc(attackTime: 0.1, releaseTime: 1.0, level: 1.0, curve: -4.0);
 	var envelope = EnvGen.kr(envFunc, doneAction: Done.freeSelf);
-	var outputSin = (sin1 * sin2 * sin3) * envelope;
+	var outputSin = (sin1 + sin2 + sin3) * envelope;
 
 	Out.ar(0, Pan2.ar(outputSin, Rand(-1,1), 1));
 }).add;
@@ -46,8 +46,8 @@ SynthDef(\dualSine, {
 
 	Out.ar(0, Pan2.ar(~outputSin, Rand(-1,1), 1));
 }).add;
-Synth.new(\dualSine).play
 )
+Synth.new(\dualSine).play
 
 (
 SynthDef(\addSine, {
@@ -61,8 +61,8 @@ SynthDef(\addSine, {
 
 	Out.ar(0, Pan2.ar(~outputSin, 0, 1));
 }).add;
-Synth.new(\addSine).play
 )
+Synth.new(\addSine).play
 
 (
 SynthDef(\ShakerSine, {
@@ -154,7 +154,7 @@ Synth(\FM);
 )
 
 // Robot noises
-{ SinOsc.ar(LFNoise0.kr(10).range(400, 12000)) }.play;
+{ Pan2.ar(SinOsc.ar(LFNoise0.kr(Rand(30, 60)).range(200, 10000), mul:0.42))}.play;
 
 (
 x = Routine({
@@ -170,7 +170,7 @@ x = Routine({
 		Synth(\Vibrato, [\freq, 67.midicps]);
 		0.24.wait;
 		Synth(\FM);
-		0.24.wait;
+		0.48.wait;
 		Synth(\FM, [\freq, 60.midicps]);
 		Synth(\Vibrato, [\freq, 67.midicps]);
 		Synth(\Brrr);

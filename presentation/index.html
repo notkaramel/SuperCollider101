@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/dracula.css" />
     <script src="./index.ts" type="module"></script>
-    <title> Collaborative Sound Creation </title>
+    <title> OSC Workshop </title>
 </head>
 
 <body>
@@ -18,15 +18,28 @@
             <section>
                 <section>
                     <h2>
-                        Collaborative Sound Creation Project
+                        Music Tech Workshop
                     </h2>
                     <hr>
-                    <i>✨ with Open Sound Control (OSC) ✨</i>
+                    <h3>
+                        <b> Open Sound Control (OSC) </b>
+                        <br>
+                        <b>
+                            & SuperCollider
+                        </b>
+                    </h3>
+                    <p>
+                        <i>
+                            by Antoine (@notkaramel)
+                        </i>
+                    </p>
                 </section>
                 <section>
                     <h3> Sections </h3>
                     <hr>
                     <p>
+                        <span><a href="#/whyOSC"> Why use OSC? What is SuperCollider </a></span>
+                        <hr>
                         <span><a href="#/step-1"> 1. Install </a></span> ~
                         <span><a href="#/step-2"> 2. Getting Started </a></span>
                         <br>
@@ -49,24 +62,137 @@
                     </p>
                 </section>
             </section>
+            <section id="whyOSC">
+                <section>
+                    <h3 class="fragment">What is Open Sound Control?</h3>
+                    <br>
+                    <h3 class="fragment">Why use OSC?</h3>
+                    <br>
+                    <h3 class="fragment">Why not use MIDI???</h3>
+                    <br>
+                    <h3 class="fragment">What is SuperCollider?</h3>
+                </section>
+                <section>
+                    <h3>
+                        "What is Open Sound Control?"
+                    </h3>
+                    <hr>
+                    <div class="fragment">
+                        <p>
+                            <b> Open Sound Control (OSC)</b> is a communication
+                            protocol for <i>computers</i>, <i>sound synthesizers</i>, and other
+                            <i>multimedia devices</i> that is <i>optimized for modern networking</i>.
+                        </p>
+                        <blockquote>
+                            <a href="https://ccrma.stanford.edu/groups/osc/files/1997-ICMC-OSC.pdf">
+                                OSC Proposal at ICMC, 1997
+                            </a>
+                        </blockquote>
+                        <hr>
+                    </div>
+                    <div class="fragment">
+                        <p>
+                            <b>OSC</b> is designed as a <i>highly accurate</i>, <i>low latency</i>,
+                            <i>lightweight</i>, and <i>flexible</i> method of communication for
+                            use in <i>realtime musical performance</i>.
+                        </p>
+                        <blockquote>
+                            <a href="https://opensoundcontrol.stanford.edu">
+                                OpenSourceControl website
+                            </a>
+                        </blockquote>
+                    </div>
+                </section>
+                <section>
+                    <h3>
+                        "Why use OSC?"
+                        <br>
+                        "Why not use MIDI?"
+                    </h3>
+                    <hr>
+                    <div class="fragment">
+                        <p>
+                            In a way, <b>OSC</b> is a <i>more flexible alternative</i> to <b>MIDI</b>.
+                        </p>
+                        <hr>
+                    </div>
+                    <p class="fragment">
+                        <b>MIDI</b> is a protocol standard made for
+                        <i>hardware synthesizer</i> with electrical <i>circuit limitations</i>.
+                        Meanwhile, <b>OSC</b> travels through the internet via UDP (or User Datagram Protocol).
+                    </p>
+                </section>
+                <section>
+                    <h3>
+                        "What is SuperCollider?"
+                    </h3>
+                    <hr>
+                    <div class="fragment">
+                        <p>
+                            In this workshop, we will <b>not</b> go into the encoding of OSC and all the nitty gritty
+                            details
+                            of it.
+                        </p>
+                        <hr>
+                    </div>
+                    <p class="fragment">
+                        We will use a program called <b>SuperCollier</b> to use and interact directly with OSC and
+                        create an application using it.
+                    </p>
+                </section>
+            </section>
             <section id="step-1">
-                <h2> Step 1: Install </h2>
+                <h2> Step 1: Get SuperCollider </h2>
                 <hr>
-                <h3>
+                <p>
+                    Download SuperCollider (Windows, Linux, MacOS):
                     <a href="https://supercollider.github.io/downloads.html" target="_blank">
-                        Download SuperCollider here!
+                        https://supercollider.github.io/downloads.html
                     </a>
-                </h3>
-                <p><i>Available on Windows, Linux, MacOS</i></p>
+                </p>
+                <div class="fragment">
+                    <hr>
+                    <p>
+                        For <i>command-line enthusiasts</i>
+                    </p>
+                    <pre><code data-noescape data-trim>
+    choco install supercollider             # Windows
+    apt install supercollider               # Debian-based
+    pacman -S supercollider                 # Arch-based
+    brew install --cask supercollider       # MacOS
+                    </code></pre>
+                </div>
             </section>
 
-            <section data-markdown id="step-2">
-                <textarea data-template>
-                    ## Step 2: Getting started
-                    -----
-                    For more indepth introduction, check out this <br>
-                    [Getting Started tutorial!](https://doc.sccode.org/Tutorials/Getting-Started/00-Getting-Started-With-SC.html)
-                </textarea>
+            <section id="step-2">
+                <section data-markdown>
+                    <textarea data-template>
+                        ## Step 2
+                        <hr>
+
+                        **Getting started with the SuperCollider IDE**
+                    </textarea>
+                </section>
+                <section>
+                    <p>Let's make a <code>Hello World</code> program.</p>
+                    <pre>
+                        <code>
+        "Hello World!".postln;
+                        </code>
+                    </pre>
+                    <div class="fragment">
+                        <hr>
+                        <p>
+                            Press <code>Ctrl Enter</code> or <code>Cmd Enter</code>
+                        </p>
+                    </div>
+                    <div class="fragment">
+                        <hr>
+                        You should get this on the post window.
+                        <br>
+                        <img src="./media/HelloWorldPost.png" alt="Hello World on post">
+                    </div>
+                </section>
             </section>
             <section id="step-3">
                 <section>
@@ -77,6 +203,7 @@
                         { SinOsc.ar(440, 0, 0.2) }.play;
                     </code>
                 </section>
+
                 <section>
                     <p> 3.1. Create a <code>SinOsc</code> object with the params: </p>
                     <code>
@@ -144,10 +271,25 @@
             </section>
 
             <section id="step-4">
-                <h2> Step 4
-                    <hr> <code>Synth</code> & <code>SynthDef</code>
-                </h2>
-                <blockquote> It's OOP time! </blockquote>
+                <section>
+                    <h2> Step 4
+                        <hr> <code>Synth</code> & <code>SynthDef</code>
+                    </h2>
+                    <blockquote> Remember OOP? </blockquote>
+                </section>
+                <section>
+                    <h2><b>SynthDef</b></h2>
+                    <hr>
+                    <div class="fragment fade-in">
+                        <pre><code data-line-numbers="3|6"><script type="text/template">
+    // Create a new Synth Definition
+    SynthDef.new(\name, {Function});
+
+    // Add (Sending) the SynthDef to the server
+    SynthDef.new(\name, {Function}).add;
+                        </script></code></pre>
+                    </div>
+                </section>
             </section>
 
             <section id="step-5">

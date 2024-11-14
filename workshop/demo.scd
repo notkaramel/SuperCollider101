@@ -49,12 +49,39 @@ x.play();
 // s.record(duration: 6);
 )
 
-FreqScope.new(500, 400, 0, server: s);
+FreqScope.new(600, 500, 0, server: s);
+FreqScope.new(600, 500, 1, server: s);
 
 
 //~delayNoise = { ~noise * ~delayEnv }.play();
 // { ~delayNoise }.play;
+s.boot;
+s.scope;
+
 { SinOsc.ar(448, pi/2, 1) }.play;
 { SinOsc.ar(660, 0, 0.5) }.play;
-{ SinOsc.ar(880, 0, 0.5) }.play;
+({
+	SinOsc.ar(200, 0, 1)
+}.play;)
+
+({
+	var freq = 200, mul = 1;
+	SinOsc.ar(freq, 0, mul)
+	+ SinOsc.ar(freq*2, 0, mul/2)
+	+ SinOsc.ar(freq*4, 0, mul/4)
+	+ SinOsc.ar(freq*8, 0, mul/8)
+	+ SinOsc.ar(freq*16, 0, mul/16)
+}.play;)
+
+(
+SynthDef.new(\demo, {
+	| freq = 200 |
+	Out.ar(0, SinOsc.ar(freq));
+}).add;
+)
+x = Synth(\demo, [\freq, 400]);
+x.free;
+x.set(\freq, 600);
+
+{ Saw.ar(440) }.play;
 

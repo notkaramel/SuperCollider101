@@ -42,7 +42,13 @@ y.stop;
 // Client and Server architecture. `s` is the default variable for a server
 s = Server("EpicECSESS", NetAddr("127.0.0.1", 57130)); // Create a server at localhost:57110
 s.boot();
-
+s.quit();
+s = Server("Testing", NetAddr("127.0.0.1", 51021));
+Server.supernova
+Server.all
+Server.killAll
+t = Server.remote(\remote, NetAddr("localhost", 51021),o);
+t.makeWindow
 // OSC message
 
 
