@@ -83,5 +83,25 @@ x = Synth(\demo, [\freq, 400]);
 x.free;
 x.set(\freq, 600);
 
-{ Saw.ar(440) }.play;
+{ Saw.ar(234.4) }.play;
 
+{ Pulse.ar(234.4) }.play;
+
+s.scope
+
+// A complete example
+(
+SynthDef(\MyNote, {
+    var freq = 550, amp = 0.5;
+    var rootOsc = SinOsc.ar(freq, 1, amp);
+
+    // Envelope the sound
+    var env = EnvGen.kr(Env.perc(0.03, 1),
+                        doneAction: Done.freeSelf);
+    var sound = rootOsc * env;
+
+    ~out = Pan2.ar(sound, Rand(-1,1));
+}).add;
+)
+
+Synth.new(\MyNote)

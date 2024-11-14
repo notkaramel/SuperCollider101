@@ -16,7 +16,7 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <section>
+                <section id="title">
                     <h2>
                         Music Tech Workshop
                     </h2>
@@ -34,7 +34,8 @@
                         </i>
                     </p>
                 </section>
-                <section>
+
+                <section id="tableOfContent">
                     <h3> Sections </h3>
                     <hr>
                     <p>
@@ -50,18 +51,54 @@
                         <span><a href="#/step-6"> 6. Envelope </a></span>
                         <br>
                         <span><a href="#/step-7"> 7. Output & Pan </a></span> ~
-                        <span><a href="#/step-8"> 8. Timbre </a></span>
+                        <span><a href="#/step-8"> 8. Server, OSC </a></span>
                         <br>
-                        <span><a href="#/step-9"> 9. Server, OSC, Workshop setup </a></span>
+                        <span><a href="#/step-9"> 9. Practice </a></span>
                         <br>
                         <span>
                             <i>
-                                <a href="#/step-10"> 🌟 Performance 🌟 </a>
+                                <a href="#/step-10"> 🌟 Application 🌟 </a>
                             </i>
                         </span>
                     </p>
                 </section>
+
+                <section id="prerequisite">
+                    <h3> Prerequisite knowledge</h3>
+                    <hr>
+                    <p>
+                        It is recommended that you have some background knowledge on
+                    <ul>
+                        <li>
+                            <b>Object Oriented Programming (OOP) </b>
+                        </li>
+                        <li>
+                            <b>Signal processing</b>
+                        </li>
+                        <li>
+                            <b>The client-server architecture</b>
+                        </li>
+                        <li>
+                            <b>Network protocol (UDP, HTTP, TCP)</b>
+                        </li>
+                    </ul>
+                    </p>
+                </section>
+
+                <section id="links">
+                    <h2>Links</h2>
+                    <hr>
+                    <p>Project Presentation:</p><br>
+                    <a href="https://notkaramel.github.io/MUMT306/" target="_blank">
+                        https://notkaramel.github.io/MUMT306/
+                    </a>
+                    <p>Project Source Code:</p><br>
+                    <a href="https://github.com/notkaramel/MUMT306" target="_blank">
+                        https://github.com/notkaramel/MUMT306
+                    </a>
+                </section>
             </section>
+
             <section id="whyOSC">
                 <section>
                     <h3 class="fragment">What is Open Sound Control?</h3>
@@ -118,7 +155,7 @@
                     </div>
                     <p class="fragment">
                         <b>MIDI</b> is a protocol standard made for
-                        <i>hardware synthesizer</i> with electrical <i>circuit limitations</i>.
+                        <i>hardware synthesizer</i> with <i>electrical circuit limitations</i>.
                         Meanwhile, <b>OSC</b> travels through the internet via UDP (or User Datagram Protocol).
                     </p>
                 </section>
@@ -141,6 +178,7 @@
                     </p>
                 </section>
             </section>
+
             <section id="step-1">
                 <h2> Step 1: Get SuperCollider </h2>
                 <hr>
@@ -153,7 +191,7 @@
                 <div class="fragment">
                     <hr>
                     <p>
-                        For <i>command-line enthusiasts</i>
+                        For the <i>command-line enthusiasts</i>
                     </p>
                     <pre><code data-noescape data-trim>
     choco install supercollider             # Windows
@@ -194,6 +232,7 @@
                     </div>
                 </section>
             </section>
+
             <section id="step-3">
                 <section>
                     <h2> Step 3: SC Basics </h2>
@@ -260,13 +299,29 @@
                     <h4>
                         3.6. Variables
                     </h4>
-                    <p>
-                        <code> a = {...} </code> single character, not recommended because there are reserved/default
-                        variable (`s` for server)
-                    </p>
-                    <p>
-                        <code>~blahblah</code> can follow any naming convention, very flexible
-                    </p>
+                    <div class="fragment">
+                        <p>
+                            <b>Single character</b> : <code> a = {...} </code>
+                            <br>
+                        <p>
+                            not recommended because there are reserved/default
+                            variable (<code>s</code> for server)
+                        </p>
+                        </p>
+                        <hr>
+                    </div>
+                    <div class="fragment">
+                        <p>
+                            <b>Long word</b><br>
+                        <pre>
+                                <code>~myThing = ...</code>
+                                <i>or</i> <br>
+                                <code>var myThingy2 = ...</code>
+                            </pre>
+                        can follow any naming convention, very flexible
+                        </p>
+                    </div>
+
                 </section>
             </section>
 
@@ -281,13 +336,127 @@
                     <h2><b>SynthDef</b></h2>
                     <hr>
                     <div class="fragment fade-in">
-                        <pre><code data-line-numbers="3|6"><script type="text/template">
-    // Create a new Synth Definition
+                        <pre>
+<code data-line-numbers="2|5">    // Create a new Synth Definition
     SynthDef.new(\name, {Function});
 
     // Add (Sending) the SynthDef to the server
-    SynthDef.new(\name, {Function}).add;
-                        </script></code></pre>
+    SynthDef.new(\name, {Function}).add;</code>
+                        </pre>
+                    </div>
+                </section>
+                <section>
+                    <h2><b>SynthDef - Example</b></h2>
+                    <hr>
+                    <div class="fragment fade-in">
+                        <pre>
+<code data-line-numbers="2|3|4|5|6" data-noescape>    // Create a new Synth Definition
+    SynthDef.new(\Sinusoid, {
+        var freq = 440; // A4
+        var sinFunc = SinOsc.ar(freq)
+        Out.ar(0, sinFunc);
+    }).add;
+</code>
+                        </pre>
+                    </div>
+                    <p class="fragment"> We will learn about <code>Out</code> function soon!</p>
+                </section>
+                <section>
+                    <h2><b>SynthDef - Example</b></h2>
+                    <hr>
+                    To run a large section of code, you can add parenthesis at the beginning and the end of the block to
+                    run it!
+                    <div class="fragment fade-in">
+                        <pre>
+<code data-line-numbers="1,8|1-8" data-noescape>(
+    // Create a new Synth Definition
+    SynthDef.new(\Sinusoid, {
+        var freq = 440; // A4
+        var sinFunc = SinOsc.ar(freq)
+        Out.ar(0, sinFunc);
+    }).add;
+)
+</code>
+                        </pre>
+                    </div>
+                </section>
+                <section>
+                    <h2><b>Synth - Example</b></h2>
+                    <hr>
+                    <div class="fragment fade-in">
+                        <pre>
+    <code data-line-numbers="1|3,4">x = Synth(\Sinusoid);
+
+// free the UGen when you're done
+x.free; // or `Ctrl .` / `Cmd .` 
+    </code>
+                        </pre>
+                    </div>
+                    <div class="fragment">
+                        <blockquote>
+                            Notice the status bar!
+                        </blockquote>
+                    </div>
+                </section>
+
+                <section>
+                    <h2><b>SynthDef - Arguments</b></h2>
+                    <hr>
+                    To add argument(s) to your SynthDef, there are two ways to do it.
+                    <div class="fragment fade-in">
+                        <p>
+                            #1: Use <code>arg</code> for variable(s)
+                        </p>
+                        <pre>
+<code data-line-numbers="4" data-noescape>(
+    // Create a new Synth Definition
+    SynthDef.new(\Sinusoid, {
+        arg freq = 440; // A4
+        var sinFunc = SinOsc.ar(freq)
+        Out.ar(0, sinFunc);
+    }).add;
+)
+</code>
+                        </pre>
+                    </div>
+                </section>
+                <section>
+                    <h2><b>SynthDef - Arguments</b></h2>
+                    <hr>
+                    To add argument(s) to your SynthDef, there are two ways to do it.
+                    <div>
+                        <p>
+                            #2: Use the pipe symbol <code>| variable |</code>
+                        </p>
+                        <pre>
+<code data-line-numbers="4" data-noescape>(
+    // Create a new Synth Definition
+    SynthDef.new(\Sinusoid, {
+        | freq = 440 | // A4
+        var sinFunc = SinOsc.ar(freq)
+        Out.ar(0, sinFunc);
+    }).add;
+)
+</code>
+                        </pre>
+                    </div>
+                </section>
+                <section>
+                    <h2><b>Synth - with Arguments</b></h2>
+                    <hr>
+                    <div class="fragment fade-in">
+                        <pre>
+    <code data-line-numbers="1,2|4,5">x = Synth(\Sinusoid, [\freq, 400]);
+x.set(\freq, 600);
+
+// Having multiple arguments?
+x = Synth(\OtherSinusoid, [\freq, 400, \amp, 0.4]);</code>
+                        </pre>
+                    </div>
+                    <div class="fragment">
+                        <blockquote>
+                            🎉 Congrats! You've master the basics of SuperCollider
+                        </blockquote>
                     </div>
                 </section>
             </section>
@@ -299,29 +468,119 @@
                     </h2>
                 </section>
                 <section>
-                    <h2> 5.1. Important functions </h2>
+                    <h2> 5.1. Basic functions </h2>
+                    <hr>
+                    <p>
+                        \[\begin{aligned}
+                        &amp; \text{Sine Wave: }
+                        x(t) = A\sin(2\pi ft + \phi) \\
+                        &amp; \text{Pulse Train: }
+                        x(t) = \sum_{n=-\infty}^{\infty} A\cdot \text{rect}\left(\frac{t-nT}{T_p}\right) \\
+                        &amp; \text{Saw Tooth: }
+                        x(t) = \frac{A}{T}t - \left\lfloor \frac{A}{T}t \right\rfloor \\
+                        \end{aligned} \]
+                    </p>
+                    <blockquote class="fragment fade-in">
+                        How can you implement those in SuperCollider??
+                    </blockquote>
+                </section>
+                <section>
+                    <h2>
+                        5.1. Basic functions
+                    </h2>
+                    <blockquote>
+                        in SuperCollider
+                    </blockquote>
+                    <hr>
+                    <p>
+                        \[\begin{aligned}
+                        &amp; \text{Sine Wave: }
+                        x = SinOsc.ar(f,\phi,Amp) \\
+                        &amp; \text{Pulse Train: }
+                        x = Pulse.ar(f, width, Amp) \\
+                        &amp; \text{Saw Tooth: }
+                        x = Saw.ar(f,Amp) \\
+                        \end{aligned} \]
+                    </p>
+                </section>
+                <section>
+                    <i>
+                        Noises in SuperCollider
+                    </i>
+                    <hr>
+                    <div class="r-stack r-stretch">
+                        <img class="fragment fade-out" data-src="./media/Noises.png" alt="SuperCollider Noises">
+                        <div class="fragment">
+                            <pre>
+<code data-line-numbers="2,5,8,11">// Brown Noise
+BrownNoise.ar(mul: 1.0, add: 0.0);
+
+// White Noise
+WhiteNoise.ar(mul: 1.0, add: 0.0);
+
+// Step Noise
+LFDNoise0.ar(freq: 500.0, mul: 1.0, add: 0.0)
+
+// Pink Noise
+Pink.ar(mul: 1.0, add: 0.0);
+</code>
+                            </pre>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2> 5.2. Signal Manipulation </h2>
+                    <hr>
+                    <p> Amplitude Modulation (AM) </p>
                     \[\begin{aligned}
-                    x_{sin} &amp; = \sin{(2\pi\omega+\theta)} \\
-                    x_{env} &amp; = \rho x - y - xz \\
-                    x_{pulse} &amp; = -\beta z + xy
+                    &amp; X_{carrier} = M\sin{2\pi f_{carrier}t} \\
+                    &amp; x(t) = A \cdot X_{carrier} \sin{(2\pi ft+\theta)} \\
+                    \end{aligned} \]
+                    <p> Frequency Modulation (FM) </p>
+                    \[\begin{aligned}
+                    &amp; X_{carrier} = M\sin{2\pi f_{carrier}t} \\
+                    &amp; x(t) = A \sin{(2\pi f\cdot X_{carrier}t+\theta)} \\
                     \end{aligned} \]
                 </section>
                 <section>
-                    <h2> 5.2. Modulation </h2>
-                    <p> Amplitude (AM) </p>
+                    <h2> 5.2. Signal Manipulation </h2>
+                    <hr>
+                    <p> Additive & Subtractive Synthesis </p>
                     \[\begin{aligned}
-                    x_{sin} &amp; = \sin{(2\pi\omega+\theta)} \\
+                    &amp; x_1(t) = A_1 \sin{(2\pi f_1t+\theta_1)} \\
+                    &amp; x_2(t) = A_2 \sin{(2\pi f_2t+\theta_2)} \\
+                    &amp; x_{out}(t) = x_1(t) \pm x_2(t) \\
                     \end{aligned} \]
-                    <p> Frequency (FM) </p>
-                    \[\begin{aligned}
-                    x_{sin} &amp; = \sin{(2\pi\omega+\theta)} \\
-                    \end{aligned} \]
+
+                    <div class="fragment">
+                        <pre>
+<code>{
+    var freq = 200, amp = 1;
+    SinOsc.ar(freq, 0, amp)
+    + SinOsc.ar(freq*2, 0, amp/2)
+    + SinOsc.ar(freq*4, 0, amp/4)
+}.play;
+</code>
+                        </pre>
+                    </div>
                 </section>
                 <section>
-                    <h2> 5.3. Convolution </h2>
-                    \[\begin{aligned}
-                    x_{sin} &amp; = \sin{(2\pi\omega+\theta)} \\
-                    \end{aligned} \]
+                    <h2> 5.3. Scopes </h2>
+                    <hr>
+                    <p>SuperCollider has built-in scopes to help us visualize our signals</p>
+                    <pre>
+<code data-line-numbers="3,6-7,10|1-10">// s is the server variable.
+// Here we want to use the time scope
+s.scope;
+
+// There is also a Spectrum Analyzer
+FreqScope.new(width: 522, height: 300, busNum: 0,
+            scopeColor, bgColor, server)
+
+// Create a FreqScope for Bus 0 on our current server, 500x400
+FreqScope(500, 400, 0, s);
+</code>
+                    </pre>
                 </section>
             </section>
 
@@ -333,67 +592,157 @@
                     <blockquote> Envelope ✉️ </blockquote>
                 </section>
                 <section>
-                    Using Envelope function
+                    <h3>
+                        Using Envelope function: <code>Env</code>
+                    </h3>
+                    <hr>
+                    <pre>
+                        <code>Env([0, 1, 0.4, 1, 0.7, 0])</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>
+                        Using Envelope function: <code>EnvGen</code>
+                    </h3>
+                    <hr>
+                    <pre>
+<code>~env = EnvGen.kr(
+    Env([0, 1, 0.4, 1, 0.7, 0]),
+    doneAction: Done.freeSelf
+);</code>
+                    </pre>
                 </section>
             </section>
 
             <section id="step-7">
-                <h2> Step 7
+                <section>
+                    <h2> Step 7
+                    </h2>
                     <hr>
-                </h2>
-                <h3><i> Output channel & Panning </i></h3>
-                <blockquote> 🎶 I can feel you over here~ 🎶 </blockquote>
+                    <h3><i> Output channels & Panning </i></h3>
+                </section>
+                <section>
+                    <h3>
+                        Channels, Bus & <code>Out</code>
+                    </h3>
+                    <hr>
+                    <p>
+                        Generally, most computers has two output channels
+                        <br>
+                        that is the <b>left channel (Bus 0)</b> and <br>
+                        the <b>right channel (Bus 1)</b>.
+                    </p>
+                    <pre>
+<code> // to see the channels
+s.meter
+
+// Output a synth
+Out.ar(bus:0, mySynth);
+Out.ar(bus:1, mySynth);</code>
+                    </pre>
+                    <blockquote class="fragment">
+                        There has to be a better way <br>
+                        to do this, right?
+                    </blockquote>
+                </section>
+                <section>
+                    <h3>
+                        The <code>Pan2</code> function
+                    </h3>
+                    <hr>
+                    <pre><code>Pan2.ar(in, pos: 0.0, level: 1.0)</code></pre>
+                    <p>
+                        where <code>in</code> is the output sound,<br>
+                        <code>pos</code> is the relative position to the center <br>
+                        <i>(-1 is left, +1 is right)</i>
+                    </p>
+                    </pre>
+                </section>
+                <section>
+                    <h2>A complete example</h2>
+                    <hr>
+                    <pre><code>// Making a note
+(
+SynthDef(\MyNote, {
+    | freq = 550, amp = 0.5 |
+    var rootOsc = SinOsc.ar(freq, 1, amp);
+    
+    // Envelope the sound
+    var env = EnvGen.kr(Env.perc(0.03, 1),
+                        doneAction: Done.freeSelf);
+    var sound = rootOsc * env;
+
+    sound = Pan2.ar(sound*amp, Rand(-1,1), 1);
+}).add;
+)</code></pre>
+                </section>
+                <section>
+                    <h3>
+                        Panning Application <br>
+                        <b> Spatialized Audio </b>
+                    </h3>
+                    <hr>
+                    <p>
+                        Lorem Ipsum
+                    </p>
+                    </pre>
+                </section>
             </section>
 
             <section id="step-8">
-                <h2> Step 8
-                    <hr> <b> Timbre </b>
-                </h2>
-                <blockquote> Grouping time?! </blockquote>
-            </section>
-
-            <section id="step-9">
                 <section>
-                    <h2> Step 9
+                    <h2> Step 8
                     </h2>
                     <hr>
-                    <p><i> SC Server, OSC message, Workshop setup </i></p>
+                    <p><i> SC Server, OSC message </i></p>
                 </section>
                 <section>
                     <!-- OSC Message to server, then to speaker -->
                     <img src="./media/ArchitecturalFlow.png" alt="How the OSC message are sent">
                 </section>
                 <section>
-                    <h3> Workshop setup </h3>
+                    <h3> The server <code>s</code> </h3>
+                    <hr>
+                    <p>
+                        Setting up your <code>localhost</code> server
+                    </p>
                 </section>
-                <section>
-                    <img src="./media/WorkshopSetup.png" alt="Workshop setup in 4 main section">
-                </section>
-                <section>
-                    <img src="./media/TimbreGroupsToServer.png" alt="How each timbre group is connecting to the server">
-                </section>
+            </section>
+
+            <section id="step-9">
+                <h2> Step 9
+                </h2>
+                <hr>
+                <h2>
+                    <b> Practice </b>
+                </h2>
             </section>
 
             <section id="step-10">
                 <section>
-                    <h1> Let's start! </h1>
+                    <h1> Application </h1>
                     <p class="fragment"> or at least, let's try! </p>
                 </section>
-                <section>
-                    <h1>
-                        <span class="fragment fade-in-then-out"> 3 </span>
-                        <span class="fragment fade-in-then-out"> 2 </span>
-                        <span class="fragment fade-in-then-out"> 1 </span>
-                    </h1>
+
+                <section data-markdown>
+                    <textarea data-template="">
+    - Participants will implement a SynthDef such that 
+        - It takes in `freq`, `location`, and `amp` arguments
+        - `freq`: frequency (400-1000 Hz)
+        - `location`: -1 for most left, +1 for most right
+        - `amp`: magnitude, 0.0 for mute and 1.0 for unison
+    - Goal: Simulate *realtime* application of OSC in video game and *spatialized audio*
+                    </textarea>
                 </section>
+
                 <section data-transition="fade-in slide-out"
                     data-background-gradient="linear-gradient(to bottom, #ccffcc, #9999ff)">
                     <h2> 🎶 </h2>
                 </section>
             </section>
 
-            <section id="step-11">
-                <h2> Let's record this session </h2>
+            <section id="thank-you">
+                <h2> Thank you for your attention! </h2>
             </section>
         </div>
     </div>

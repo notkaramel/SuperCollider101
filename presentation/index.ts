@@ -9,4 +9,6 @@ new Reveal({ plugins: [
     Markdown,
     RevealMath.KaTeX,
     RevealHighlight
-] }).initialize();
+] }).initialize({
+    slideNumber: 'h/v'
+});
