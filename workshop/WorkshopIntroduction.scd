@@ -1,4 +1,4 @@
-// ECSESS Workshop demo
+// OSC Workshop demo
 
 // Start with simple Sinusoid Oscillator
 

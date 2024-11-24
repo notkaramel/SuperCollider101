@@ -141,7 +141,7 @@ Synth(\Vibrato);
 
 (
 SynthDef(\FM, {
-    arg freq = 400, freqFM = 200, amp = 0.6;
+    arg freq = 400, freqFM = 400, amp = 0.6;
 	var rootOsc = SinOsc.ar(freq * SinOsc.ar(freqFM, 2*pi, 1), Rand(0, 2*pi));
     // Envelope the sound
 	var env = EnvGen.kr(Env.perc(0.02, 1), doneAction: Done.freeSelf);
@@ -154,7 +154,7 @@ Synth(\FM);
 )
 
 // Robot noises
-{ Pan2.ar(SinOsc.ar(LFNoise0.kr(Rand(30, 60)).range(200, 10000), mul:0.42))}.play;
+{ Pan2.ar(SinOsc.ar(LFNoise0.kr(Rand(30, 60)).range(200, 6000), mul:0.42))}.play;
 
 (
 x = Routine({

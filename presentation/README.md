@@ -65,19 +65,19 @@
 - Sending sound to the output, with panning function to allow spacialized audio
 - [Head-related transfer function (HRTF)](https://en.wikipedia.org/wiki/Head-related_transfer_function)
 
-## Step 8: Timbre
-
-- Start sectioning the workshops into different timbre sections
-
-## Step 9: SC Server, OSC ✨, Workshop Setup
+## Step 8: SC Server, OSC ✨, Workshop Setup
 
 - How SC Server communicate with SC Client and synthesize audio (Architecture)
 - OSC message basics
 - (Local) Network Port
 - Booting up the server
 
-## Step 10: Let's start
-
-- Orchestrate the workshop
+## Step 10: Application
+- Participants will implement a SynthDef such that 
+  - It takes in `freq`, `location`, and `amp` arguments
+    - `freq`: frequency (400-1000 Hz)
+    - `location`: -1 for most left, +1 for most right
+    - `amp`: Amplification, 0.0 for mute and 1.0 for unison
+- Goal: Simulate realtime application of OSC in video game and spatialized audio
 
 ## Step 11: Perform & Record
