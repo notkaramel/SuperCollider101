@@ -830,7 +830,8 @@ SynthDef(\MyNote, {
                     <div class="fragment">
                         <hr>
                         SuperCollider Ambisonic Toolkit:
-                        <a href="https://doc.sccode.org/Guides/Intro-to-the-ATK.html" class="r-fit-text">doc.sccode.org/Guides/Intro-to-the-ATK.html</a>
+                        <a href="https://doc.sccode.org/Guides/Intro-to-the-ATK.html"
+                            class="r-fit-text">doc.sccode.org/Guides/Intro-to-the-ATK.html</a>
                     </div>
                     </pre>
                 </section>
@@ -841,7 +842,8 @@ SynthDef(\MyNote, {
                     <hr>
                     <p class="fragment">
                         <span>
-                            <b>Head-related transfer function</b> (HRTF) is another technique to achieve spatialized audio.
+                            <b>Head-related transfer function</b> (HRTF) is another technique to achieve spatialized
+                            audio.
                         </span>
                     </p>
                     <div class="fragment">
@@ -883,28 +885,83 @@ SynthDef(\MyNote, {
             <section id="step-10">
                 <section>
                     <h1> Application </h1>
-                    <p class="fragment"> or at least, let's try! </p>
+                    <p class="fragment"> Let's make a game! </p>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                    ## Game time! 🎮
+                    You will implement a Python Turtle game that uses OSC to synthetize sound effects.
+                    ***
+                    Link to the game template: [https://github.com/notkaramel/RunningBlobby](https://github.com/notkaramel/RunningBlobby)
+
+                    ---
+                    Set up the game repository:
+                    ```sh
+                    git clone https://github.com/notkaramel/RunningBlobby
+                    cd RunningBlobby
+
+                    python3 -m venv .venv
+                    source .venv/bin/activate
+
+                    pip install -r requirements.txt
+
+                    python main.py # to run the game
+
+                    ```
+                    ---
+                    - Goal: Simulate *realtime* application of OSC in video game and *spatialized audio*
+                    ---
+                    ## Tasks
+                    ***
+                    You will implement a few `SynthDef`s in SuperCollider 
+                    - `\run`: when the player runs
+                        - Args: `xPosition`
+                    - `\wall`: when the player hits the wall
+                        - Args: `xPosition`
+                    - `\spin`: when the player spins
+                        - Args: `xPosition`
+                        
+                    `x`: -1 for most left, +1 for most right
+                    </textarea>
                 </section>
 
                 <section data-markdown>
                     <textarea data-template="">
-                    - Participants will implement a SynthDef such that 
-                        - It takes in `freq`, `location`, and `amp` arguments
-                        - `freq`: frequency (400-1000 Hz)
-                        - `location`: -1 for most left, +1 for most right
-                        - `amp`: magnitude, 0.0 for mute and 1.0 for unison
-                    - Goal: Simulate *realtime* application of OSC in video game and *spatialized audio*
+                    
                     </textarea>
-                </section>
-
-                <section data-transition="fade-in slide-out"
-                    data-background-gradient="linear-gradient(to bottom, #ccffcc, #9999ff)">
-                    <h2> 🎶 </h2>
                 </section>
             </section>
 
             <section id="thank-you">
-                <h2> Thank you for your attention! </h2>
+                <section>
+                    <h2> Thank you for attending the workshop! </h2>
+                    <p> 🎉 🎉 🎉 </p>
+                    <blockquote class="fragment">
+                        Any questions?
+                    </blockquote>
+                </section>
+                <section>
+                    <h3>Curious to learn more about SuperCollider?</h3>
+                    <hr>
+                    <div class="r-stack r-stretch">
+                        <div class="fragment fade-out">
+                            <p>
+                                <a href="https://www.youtube.com/@elifieldsteel" target="_blank">
+                                    <img src="./media/EliFieldsteel.png" alt="Eli Fieldsteel YouTube Channel">
+                                    https://www.youtube.com/@elifieldsteel
+                                </a>
+                            </p>
+                        </div>
+                        <div class="fragment">
+                            <p>
+                                <a href="https://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC" target="_blank">
+                                    <img src="./media/EliFieldsteel2.png" alt="Eli Fieldsteel YouTube Playlist">
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
             </section>
         </div>
     </div>
