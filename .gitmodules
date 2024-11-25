@@ -1,0 +1,3 @@
+[submodule "RunnyBlobby"]
+	path = RunnyBlobby
+	url = git@github.com:notkaramel/RunnyBlobby.git

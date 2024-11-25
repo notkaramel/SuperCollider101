@@ -17,13 +17,12 @@ SynthDef(\sineNote, {
 Synth(\sineNote, [\freq, 440]);
 
 (
-SynthDef(\timbreA, {
+SynthDef(\threeSin, {
 	arg freq1 = 400, freq2 = 600, freq3 = 800;
 	var sin1 = SinOsc.ar(freq1, Rand(0, 2*pi), Rand(0,1));
 	var sin2 = SinOsc.ar(freq2, Rand(0, 2*pi), Rand(0,1));
 	var sin3 = SinOsc.ar(freq3, Rand(0, 2*pi), Rand(0,1));
 
-	// ~envFunc = Env.new(levels: [0, 1, 0.9, 0], times: [0.1, 0.5, 4], curve: [-5, 0, -5]);
 	var envFunc = Env.perc(attackTime: 0.1, releaseTime: 1.0, level: 1.0, curve: -4.0);
 	var envelope = EnvGen.kr(envFunc, doneAction: Done.freeSelf);
 	var outputSin = (sin1 + sin2 + sin3) * envelope;
@@ -31,11 +30,11 @@ SynthDef(\timbreA, {
 	Out.ar(0, Pan2.ar(outputSin, Rand(-1,1), 1));
 }).add;
 )
-Synth.new(\timbreA).play
+Synth.new(\threeSin).play
 
 
 (
-SynthDef(\dualSine, {
+SynthDef(\AM, {
 	var freq1 = 400, freq2 = 800;
 	~sin1 = SinOsc.ar(freq1, Rand(0, 2*pi), 0.5);
 	~sin2 = SinOsc.ar(freq2, Rand(0, 2*pi), 0.5);
@@ -47,10 +46,10 @@ SynthDef(\dualSine, {
 	Out.ar(0, Pan2.ar(~outputSin, Rand(-1,1), 1));
 }).add;
 )
-Synth.new(\dualSine).play
+Synth.new(\AM).play
 
 (
-SynthDef(\addSine, {
+SynthDef(\additiveSine, {
 	var freq1 = 400, freq2 = 800;
 	~sin1 = SinOsc.ar(freq1, Rand(0, 2*pi), 0.5);
 	~sin2 = SinOsc.ar(freq2, Rand(0, 2*pi), 0.5);
@@ -62,7 +61,7 @@ SynthDef(\addSine, {
 	Out.ar(0, Pan2.ar(~outputSin, 0, 1));
 }).add;
 )
-Synth.new(\addSine).play
+Synth.new(\additiveSine).play
 
 (
 SynthDef(\ShakerSine, {
@@ -76,11 +75,10 @@ SynthDef(\ShakerSine, {
 
 	Out.ar(0, Pan2.ar(~outputSin, 0, 1));
 }).add;
-Synth.new(\ShakerSine).play
 )
 
+Synth.new(\ShakerSine).play
 
-// Sounds like a snare
 (
 SynthDef(\Puff, {
     arg freq = 550, amp = 0.5;
@@ -92,10 +90,10 @@ SynthDef(\Puff, {
 	sound = Pan2.ar(sound*amp, 0, 1);
 	Out.ar(0, sound);
 }).add;
-Synth(\Puff);
 )
 
-
+// Sounds like a snare
+Synth(\Puff);
 
 (
 SynthDef(\Baff, {
@@ -108,8 +106,9 @@ SynthDef(\Baff, {
 	sound = Pan2.ar(sound*amp, 0, 1);
 	Out.ar(0, sound);
 }).add;
-Synth(\Baff);
 )
+
+Synth(\Baff);
 
 (
 SynthDef(\Brrr, {
@@ -122,8 +121,9 @@ SynthDef(\Brrr, {
 	sound = Pan2.ar(sound*amp, 0, 1);
 	Out.ar(0, sound);
 }).add;
-Synth(\Brrr);
 )
+// Sounds like a boot
+Synth(\Brrr);
 
 (
 SynthDef(\Vibrato, {
@@ -136,8 +136,10 @@ SynthDef(\Vibrato, {
 	sound = Pan2.ar(sound*amp, 0, 1);
 	Out.ar(0, sound);
 }).add;
-Synth(\Vibrato);
 )
+
+// Listen to a vibrato
+Synth(\Vibrato);
 
 (
 SynthDef(\FM, {
@@ -150,8 +152,10 @@ SynthDef(\FM, {
 	sound = Pan2.ar(sound*amp, 0, 1);
 	Out.ar(0, sound);
 }).add;
-Synth(\FM);
 )
+
+// Listen to Frequency Modulation
+Synth(\FM);
 
 // Robot noises
 { Pan2.ar(SinOsc.ar(LFNoise0.kr(Rand(30, 60)).range(200, 6000), mul:0.42))}.play;
@@ -178,8 +182,3 @@ x = Routine({
 });
 x.play();
 )
-
-s.record
-s.scope
-s.plot
-

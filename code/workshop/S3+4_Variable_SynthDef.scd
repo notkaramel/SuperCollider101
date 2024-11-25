@@ -1,3 +1,15 @@
+// Start with simple Sinusoid Oscillator
+
+// Create a function with { }
+a = { SinOsc.ar(440) }; // A4
+a.play();
+
+// Stop the synth with `Ctrl + .`
+
+// Long variable name
+~longerNamedVariable = { SinOsc.ar([400, 401], 0, 0.1) * EnvGen.kr(Env.sine(10)) };
+~longerNamedVariable.play()
+
 (
 (
 SynthDef(\note, {
@@ -22,8 +34,9 @@ SynthDef(\note, {
 // ~fun2 = Synth.new(\note, [\freq, 660]);
 )
 
-x = { SinOsc.ar(520, pi/2, 1) };
 { SinOsc.ar(540, pi, 1) }.play();
+
+x = { SinOsc.ar(520, pi/2, 1) };
 x.plot;
 y = { x*SinOsc.kr(540, pi, 1) };
 x.play;
@@ -31,6 +44,7 @@ y.play;
 
 x.free;
 y.free;
+
 { PinkNoise.ar() }.play();
 
 ( // Sound like a wave
@@ -49,12 +63,11 @@ x.play();
 // s.record(duration: 6);
 )
 
+// Frequency scope on channel 0 and 1, respectively
 FreqScope.new(600, 500, 0, server: s);
 FreqScope.new(600, 500, 1, server: s);
 
 
-//~delayNoise = { ~noise * ~delayEnv }.play();
-// { ~delayNoise }.play;
 s.boot;
 s.scope;
 
