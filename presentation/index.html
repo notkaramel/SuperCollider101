@@ -50,15 +50,15 @@
                         <span><a href="#/step-5"> 5. Signal Processing </a></span> ~
                         <span><a href="#/step-6"> 6. Envelope </a></span>
                         <br>
-                        <span><a href="#/step-7"> 7. Output & Pan </a></span> ~
+                        <span><a href="#/step-7"> 7. Output & Panning </a></span> ~
                         <span><a href="#/step-8"> 8. Server, OSC </a></span>
                         <br>
                         <span><a href="#/step-9"> 9. Practice </a></span>
                         <br>
                         <span>
-                            <i>
-                                <a href="#/step-10"> 🌟 Application 🌟 </a>
-                            </i>
+                            <b>
+                                <a href="#/step-10"> 🌟 Game time! 🌟 </a>
+                            </b>
                         </span>
                     </p>
                 </section>
@@ -166,9 +166,8 @@
                     <hr>
                     <div class="fragment">
                         <p>
-                            In this workshop, we will <b>not</b> go into the encoding of OSC and all the nitty gritty
-                            details
-                            of it.
+                            In this workshop, we will <b>not</b> go into the <b>encoding of OSC</b>
+                            and all the nitty gritty details of it.
                         </p>
                         <hr>
                     </div>
@@ -230,6 +229,24 @@
                         <br>
                         <img src="./media/HelloWorldPost.png" alt="Hello World on post">
                     </div>
+                </section>
+                <section>
+                    <h2>Documentation</h2>
+                    <hr>
+                    <p>
+                        SuperCollider has a very extensive documentation.
+                        <br>
+                        You can access it by pressing <code>Ctrl Shift D</code> or <code>Cmd Shift D</code>
+                    </p>
+                    <img src="./media/DocumentationPopup.png" alt="Documentation Pop-up">
+                </section>
+                <section>
+                    <h2>Documentation</h2>
+                    <hr>
+                    <p>
+                        You can also access the documentation of a function by
+                        <code>Ctrl D</code> or <code>Cmd D</code> with the cursor on the code.
+                    </p>
                 </section>
             </section>
 
@@ -455,7 +472,7 @@ x = Synth(\OtherSinusoid, [\freq, 400, \amp, 0.4]);</code>
                     </div>
                     <div class="fragment">
                         <blockquote>
-                            🎉 Congrats! You've master the basics of SuperCollider
+                            🎉 Congrats! You've mastered the basics of SuperCollider IDE!
                         </blockquote>
                     </div>
                 </section>
@@ -589,16 +606,56 @@ FreqScope(500, 400, 0, s);
                     <h2> Step 6
                         <hr> <i>Let's make a note!</i>
                     </h2>
-                    <blockquote> Envelope ✉️ </blockquote>
+                    <blockquote> with Envelope 💌 </blockquote>
                 </section>
                 <section>
                     <h3>
-                        Using Envelope function: <code>Env</code>
+                        Envelope function: <code>Env</code>
+                    </h3>
+                    <hr>
+                    <p>
+                        In essence, an envelope is a function that changes the amplitude of a sound over time.
+                        It puts the sound in an "envelope" of sorts, hence the name.
+                    </p>
+                    <p class="fragment">
+                        There are many ways to create an envelope in SuperCollider.
+                    </p>
+                </section>
+                <section>
+                    <h3>
+                        Envelope function: <code>Env</code>
                     </h3>
                     <hr>
                     <pre>
-                        <code>Env([0, 1, 0.4, 1, 0.7, 0])</code>
-                    </pre>
+<code data-line-numbers="2,3|*">Env.new(
+    levels: [0, 1, 0.9, 0],
+    times: [0.1, 0.5, 1],
+    curve: 'lin'
+).plot;
+</code>
+</pre>
+                    <img src="./media/EnvExample.png" alt="Example of an envelope function" class="r-stretch">
+                </section>
+                <section>
+                    <h3>
+                        Using Envelope function: <code>EnvGen</code>
+                    </h3>
+                    <hr>
+                    <p>
+                        The <code>EnvGen</code> function is used to generate an envelope.
+                    </p>
+                    <hr>
+                    <p>
+                        You can think <code>Env</code> is the <i>blueprint</i> or <i>specifications</i> of the envelope,
+                        while <code>EnvGen</code> is the <i>instance</i> that you can use.
+                    </p>
+                </section>
+                <section>
+                    <h3>
+                        <code>Env</code> example
+                    </h3>
+                    <hr>
+                    <pre><code>~envFunc = Env.perc(0.2, 0.7, 1.0, -3.0);</code></pre>
                 </section>
                 <section>
                     <h3>
@@ -606,11 +663,65 @@ FreqScope(500, 400, 0, s);
                     </h3>
                     <hr>
                     <pre>
-<code>~env = EnvGen.kr(
-    Env([0, 1, 0.4, 1, 0.7, 0]),
-    doneAction: Done.freeSelf
+<code data-line-numbers="1,2,7">EnvGen.ar(
+    envelope,
+    gate: 1.0,
+    levelScale: 1.0,
+    levelBias: 0.0,
+    timeScale: 1.0,
+    doneAction: 0
 );</code>
                     </pre>
+                    <p>
+                        For the scope of this workshop, we will only look into the evelope function and the
+                        <code>doneAction</code> parameter.
+                    </p>
+                </section>
+                <section>
+                    <h3>
+                        <code>doneAction</code> parameter
+                    </h3>
+                    <hr>
+                    <code>doneAction: Done.freeSelf;</code><br>
+                    <p class="r-fit-text">
+                        This parameter tells the server what to do when the envelope is done.
+                    </p>
+                    <div class="fragment">
+                        <hr>
+                        <p>
+                            <code>Done.freeSelf</code> means that the "note" will be freed when the envelope is done.
+                        </p>
+                    </div>
+                    <div class="fragment">
+                        <br>
+                        <p class="r-fit-text">
+                            This concept in SuperCollider is called <b>nodes (node objects)</b> on the server.
+                        </p>
+                    </div>
+                </section>
+                <section>
+                    <h3>
+                        <code>EnvGen</code> example
+                    </h3>
+                    <hr>
+                    <pre>
+<code data-line-numbers="2|*">~envFunc = Env.perc(0.2, 0.7, 1.0, -3.0);
+EnvGen.kr(~envFunc, doneAction: Done.freeSelf);</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Making a note</h3>
+                    <hr>
+                    <pre>
+<code>(
+{
+    ~envFunc = Env.perc(0.2, 0.7, 1.0, -3.0);
+    ~env = EnvGen.kr(env, doneAction: Done.freeSelf);
+    SinOsc.ar(440) * env;
+}.play
+)
+</code>
+</pre>
                 </section>
             </section>
 
@@ -619,7 +730,10 @@ FreqScope(500, 400, 0, s);
                     <h2> Step 7
                     </h2>
                     <hr>
-                    <h3><i> Output channels & Panning </i></h3>
+                    <h3><b> Output channels & Panning </b></h3>
+                    <blockquote>
+                        Spatialized Audio!? 🎧
+                    </blockquote>
                 </section>
                 <section>
                     <h3>
@@ -627,9 +741,11 @@ FreqScope(500, 400, 0, s);
                     </h3>
                     <hr>
                     <p>
-                        Generally, most computers has two output channels
+                        <span class="r-fit-text">
+                            Generally, most generic computers has two output channels:
+                        </span>
                         <br>
-                        that is the <b>left channel (Bus 0)</b> and <br>
+                        the <b>left channel (Bus 0)</b> & <br>
                         the <b>right channel (Bus 1)</b>.
                     </p>
                     <pre>
@@ -647,6 +763,23 @@ Out.ar(bus:1, mySynth);</code>
                 </section>
                 <section>
                     <h3>
+                        Multichannel Expansion
+                    </h3>
+                    <hr>
+                    <pre>
+<code data-line-numbers="2,5,8">// one channel
+{ Blip.ar(800,4,0.1) }.play;
+
+// two channels
+{ [ Blip.ar(800,4,0.1), WhiteNoise.ar(0.1) ] }.play;
+
+// Simple example
+{ SinOsc.ar([440, 880], 0, 0.2) }.play;</code>
+</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>
                         The <code>Pan2</code> function
                     </h3>
                     <hr>
@@ -661,16 +794,16 @@ Out.ar(bus:1, mySynth);</code>
                 <section>
                     <h2>A complete example</h2>
                     <hr>
-                    <pre><code>// Making a note
+                    <pre>
+<code data-line-numbers="3,4,5,8,9,11|*">// Making a note
 (
 SynthDef(\MyNote, {
     | freq = 550, amp = 0.5 |
     var rootOsc = SinOsc.ar(freq, 1, amp);
     
     // Envelope the sound
-    var env = EnvGen.kr(Env.perc(0.03, 1),
-                        doneAction: Done.freeSelf);
-    var sound = rootOsc * env;
+    ~envFunc = Env.perc(0.2, 0.7, 1.0, -3.0);
+    ~env = EnvGen.kr(env, doneAction: Done.freeSelf);
 
     sound = Pan2.ar(sound*amp, Rand(-1,1), 1);
 }).add;
@@ -678,13 +811,42 @@ SynthDef(\MyNote, {
                 </section>
                 <section>
                     <h3>
-                        Panning Application <br>
-                        <b> Spatialized Audio </b>
+                        <i>[tangent]</i> <b> Spatialized Audio </b>
                     </h3>
                     <hr>
-                    <p>
-                        Lorem Ipsum
+                    <p class="r-fit-text">
+                        To achieve spatialized audio, we need more than just panning with <code>Pan2</code>.
                     </p>
+                    <hr>
+                    <p class="fragment">
+                        <span class="r-fit-text">
+                            <b> Ambisonics </b> is a technique to achieve spatialized audio. <br>
+                        </span>
+                        <span class="r-fit-text">
+                            It uses concepts such as <i>W, X, Y, Z</i> to represent the sound in a 3D space.
+                        </span>
+                    </p>
+
+                    <div class="fragment">
+                        <hr>
+                        SuperCollider Ambisonic Toolkit:
+                        <a href="https://doc.sccode.org/Guides/Intro-to-the-ATK.html" class="r-fit-text">doc.sccode.org/Guides/Intro-to-the-ATK.html</a>
+                    </div>
+                    </pre>
+                </section>
+                <section>
+                    <h3>
+                        <i>[tangent]</i> <b> Spatialized Audio </b>
+                    </h3>
+                    <hr>
+                    <p class="fragment">
+                        <span>
+                            <b>Head-related transfer function</b> (HRTF) is another technique to achieve spatialized audio.
+                        </span>
+                    </p>
+                    <div class="fragment">
+                        <img src="./media/HRTF_mathworks.png" alt="HRTF" class="r-stretch">
+                    </div>
                     </pre>
                 </section>
             </section>

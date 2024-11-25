@@ -1,3 +1,35 @@
+// 5.1. Basic functions
+{ SinOsc.ar(234) }.play;
+
+{ Pulse.ar(234) }.play;
+
+{ Saw.ar(234) }.play;
+
+// Pop up the scope to see the output 
+s.scope;
+
+// Brown Noise
+BrownNoise.ar(mul: 1.0, add: 0.0);
+ 
+// White Noise
+WhiteNoise.ar(mul: 1.0, add: 0.0);
+ 
+// Step Noise
+LFDNoise0.ar(freq: 500.0, mul: 1.0, add: 0.0)
+ 
+// Pink Noise
+Pink.ar(mul: 1.0, add: 0.0);
+
+// Frequency scopes: Spectrum analyzer on one channel
+FreqScope(500, 400, 0, s);
+
+
+// You can go crazy with the notes by performing signal manipulation
+// Common techniques:
+// - Amplitude Modulation
+// - Frequency Modulation
+// - Additive Synthesis
+// - Subtractive Synthesis
 (
 SynthDef(\sineNote, {
     arg freq = 550, amp = 0.5;
@@ -8,9 +40,6 @@ SynthDef(\sineNote, {
 
 	sound = Pan2.ar(sound*amp, Rand(-1,1), 1);
 	Out.ar(0, sound);
-
-	/*Out.ar(IRand(0,1), sound*amp);
-	Out.ar(IRand(0,1), sound*amp);*/
 }).add;
 )
 

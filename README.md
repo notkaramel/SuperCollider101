@@ -10,6 +10,10 @@ License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), or see
 
 # Folders
 - [presentation](./presentation/) - Hosts the workshop's presentation with the step-by-step guide to work with SuperCollider
-- [server](./server/) - Setting up the server
-- [webapp](./webapp/) - Example web app that interact with the `scsynth` server
-- [workshop](./workshop/) - The workshop examples and sets of precreated sounds
+- [game](./game/)
+  - A simple Python Turtle game that uses SuperCollider as its sound synthesizer
+  - Licensed under MIT License
+- [code](./code/)
+  - Workshop examples
+  - Sets of pre-created sounds
+  - Other random use cases of SuperCollider
