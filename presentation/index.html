@@ -53,11 +53,11 @@
                         <span><a href="#/step-7"> 7. Output & Panning </a></span> ~
                         <span><a href="#/step-8"> 8. Server, OSC </a></span>
                         <br>
-                        <span><a href="#/step-9"> 9. Practice </a></span>
+                        <span><a href="#/step-9"> 9. Extras </a></span>
                         <br>
                         <span>
                             <b>
-                                <a href="#/step-10"> 🌟 Game time! 🌟 </a>
+                                <a href="#/game"> 🌟 Game time! 🌟 </a>
                             </b>
                         </span>
                     </p>
@@ -656,6 +656,22 @@ FreqScope(500, 400, 0, s);
                     </h3>
                     <hr>
                     <pre><code>~envFunc = Env.perc(0.2, 0.7, 1.0, -3.0);</code></pre>
+                    <img src="./media/EnvPerc.png" alt="Percussive Envelope" class="r-stretch">
+                    <p class="r-fit-text">This is also called an <b>Attack-Release</b> envelope</p>
+                </section>
+                <section>
+                    <h3>Types of envelope</h3>
+                    <hr>
+                    <p>
+                        For more types of envelope, you can check the <br>
+                        <b>SuperCollider documentation</b>.
+                    </p>
+                    <p>
+                        Additionally, you can checkout the basics and types of envelope at
+                        <a href="https://thewolfsound.com/envelopes/">
+                            https://thewolfsound.com/envelopes/
+                        </a>
+                    </p>
                 </section>
                 <section>
                     <h3>
@@ -673,7 +689,7 @@ FreqScope(500, 400, 0, s);
 );</code>
                     </pre>
                     <p>
-                        For the scope of this workshop, we will only look into the evelope function and the
+                        For the scope of this workshop, we will only look into the envelope function and the
                         <code>doneAction</code> parameter.
                     </p>
                 </section>
@@ -737,7 +753,7 @@ EnvGen.kr(~envFunc, doneAction: Done.freeSelf);</code>
                 </section>
                 <section>
                     <h3>
-                        Channels, Bus & <code>Out</code>
+                        Channel / Bus
                     </h3>
                     <hr>
                     <p>
@@ -757,26 +773,91 @@ Out.ar(bus:0, mySynth);
 Out.ar(bus:1, mySynth);</code>
                     </pre>
                     <blockquote class="fragment">
-                        There has to be a better way <br>
-                        to do this, right?
+                        Why do we need the <code>Out</code> function?
                     </blockquote>
+                </section>
+                <section>
+                    <h3>
+                        <code>Out</code> function
+                    </h3>
+                    <hr>
+                    <p>
+                        <span class="r-fit-text">
+                            The <code>Out</code> function is used to output the sound to a specific channel.
+                        </span>
+                        <br>
+                    <pre><code>Out.ar(bus:0, mySynth);</code></pre>
+                    <span class="r-fit-text">
+                        outputs the synth <code>mySynth</code> to the left channel.
+                    </span>
+                    </p>
+                    <p class="fragment">
+                        <br>
+                        This is particularly useful for multi-speaker setup!
+                    </p>
                 </section>
                 <section>
                     <h3>
                         Multichannel Expansion
                     </h3>
                     <hr>
+                    <p>
+                        We can create a function with multiple audio channels by using the array syntax.
+                    </p>
                     <pre>
 <code data-line-numbers="2,5,8">// one channel
 { Blip.ar(800,4,0.1) }.play;
 
-// two channels
+// two channels in an array
 { [ Blip.ar(800,4,0.1), WhiteNoise.ar(0.1) ] }.play;
 
-// Simple example
+// two frequencies in an array
 { SinOsc.ar([440, 880], 0, 0.2) }.play;</code>
 </code>
                     </pre>
+                </section>
+                <section>
+                    <h3>
+                        Multichannel Expansion + <code>Out</code>
+                    </h3>
+                    <hr>
+                    <p>
+                        We can make the <code>Out</code> function output to multiple channels using <i>multichannel
+                            expansion</i>.
+                    </p>
+                    <pre>
+<code data-line-numbers="3,4,6,9|*">(
+{
+    ~sound1 = Blip.ar(800,4,0.1);
+    ~sound2 = WhiteNoise.ar(0.1);
+    // the explicit way
+    Out.ar([0,1], [~sound1, ~sound2]);
+
+    // using multichannel expansion
+    Out.ar(0, [~sound1, ~sound2]);
+}.play;
+)</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>
+                        Multichannel Expansion + <code>Out</code>
+                    </h3>
+                    <hr>
+                    <pre>
+                        <code>    // using multichannel expansion
+    Out.ar(0, [~sound1, ~sound2]);</code>
+                        </pre>
+                    <p class="r-fit-text">
+                        All sounds are expanded from channel 0 to the next channels.
+                    </p>
+                    <hr>
+                    <p class="fragment r-fit-text">
+                        <i>What if you have more sound functions than channels?</i>
+                    </p>
+                    <p class="fragment r-fit-text">
+                        <b>The sound(s) on unavailable channel(s) will not be played!</b>
+                    </p>
                 </section>
                 <section>
                     <h3>
@@ -795,7 +876,7 @@ Out.ar(bus:1, mySynth);</code>
                     <h2>A complete example</h2>
                     <hr>
                     <pre>
-<code data-line-numbers="3,4,5,8,9,11|*">// Making a note
+<code data-line-numbers="3,4,5,8,9,11,12|*">// Making a note
 (
 SynthDef(\MyNote, {
     | freq = 550, amp = 0.5 |
@@ -805,7 +886,8 @@ SynthDef(\MyNote, {
     ~envFunc = Env.perc(0.2, 0.7, 1.0, -3.0);
     ~env = EnvGen.kr(env, doneAction: Done.freeSelf);
 
-    sound = Pan2.ar(sound*amp, Rand(-1,1), 1);
+    // Equally panned on both channels
+    sound = Pan2.ar(sound*amp, 0, 1);
 }).add;
 )</code></pre>
                 </section>
@@ -858,31 +940,259 @@ SynthDef(\MyNote, {
                     <h2> Step 8
                     </h2>
                     <hr>
-                    <p><i> SC Server, OSC message </i></p>
+                    <p class="r-fit-text"><b> OSC message & <code>scsynth</code> Server </b></p>
+                    <blockquote>Brace yourself!</blockquote>
                 </section>
                 <section>
-                    <!-- OSC Message to server, then to speaker -->
-                    <img src="./media/ArchitecturalFlow.png" alt="How the OSC message are sent">
+                    <p><i>The client-server architecture</i></p>
+                    <hr>
+                    <div class="r-stack r-stretch">
+                        <img src="./media/Arch1.png" alt="Client only" class="fragment fade-in-and-out">
+                        <img src="./media/Arch2.png" alt="s.boot sent" class="fragment fade-in-and-out">
+                        <img src="./media/Arch3.png" alt="scsynth spawned" class="fragment fade-in-and-out">
+                        <img src="./media/Arch4.png" alt="Default port and host" class="fragment fade-in-and-out">
+                        <img src="./media/Arch5.png" alt="Create a SynthDef" class="fragment fade-in-and-out">
+                        <img src="./media/Arch6.png" alt="Send the SynthDef" class="fragment fade-in-and-out">
+                        <img src="./media/Arch7.png" alt="OSC message" class="fragment fade-in-and-out">
+                        <img src="./media/Arch8.png" alt="UDP Response" class="fragment fade-in-and-out">
+                        <img src="./media/Arch9.png" alt="Play the synth" class="fragment fade-in-and-out">
+                        <img src="./media/Arch10.png" alt="OSC message of play command"
+                            class="fragment fade-in-and-out">
+                        <img src="./media/Arch11.png" alt="Server plays the Synth" class="fragment fade-in-and-out">
+                        <img src="./media/Arch12.png" alt="Terminate command" class="fragment fade-in-and-out">
+                        <img src="./media/Arch13.png" alt="Server stops playing" class="fragment fade-in-and-out">
+                    </div>
+                    <div class="fragment">
+                        <i>Note: </i> the client is called <code>sclang</code>.
+                    </div>
                 </section>
                 <section>
-                    <h3> The server <code>s</code> </h3>
+                    <p class="fragment r-fit-text">How can you interact with the server?</p>
+                    <p class="fragment r-fit-text">How can you encode an OSC message?</p>
+                    <p class="fragment r-fit-text">What can you do with all of these knowledge?</p>
+                </section>
+                <section>
+                    <h3>The <code>scsynth</code> server</h3>
                     <hr>
                     <p>
-                        Setting up your <code>localhost</code> server
+                        The <code>scsynth</code> server is the server that runs the SuperCollider synthesis engine.
                     </p>
+                    <div class="fragment">
+                        <hr>
+                        <p>
+                            By default, it runs on <code>localhost:57110</code>
+                        </p>
+                    </div>
+                    <div class="fragment">
+                        <hr>
+                        <p>
+                            SuperCollider IDE default server variable is <code>s</code>.
+                        </p>
+                        <blockquote><code>s.addr;</code> reveals the local address</blockquote>
+                    </div>
+                </section>
+                <section>
+                    <h3> Interact with the <code>scsynth</code> server</h3>
+                    <hr>
+                    <div class="fragment">
+                        <pre>
+<code>// Boot the server
+s.boot;
+
+// Show the server address & port
+s.addr;
+
+// Quit the server
+s.quit;
+
+// Show the server output scope (time vs amplitude)
+s.scope;
+
+// Show the server input & output meter
+s.meter;
+</code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>OSC encoding schema</h2>
+                    <hr>
+                    <p>
+                        OSC follows a schema as follows:
+                    </p>
+                    <code> /address, [values] </code><br>
+                    <code> /address, [tags, arguments] </code>
+                    <div class="fragment">
+                        <p>
+                            Example: to create a new synth with the name "sine" <br>
+                        </p>
+                        <code> /s_new, ["sine"] </code>
+                    </div>
+                </section>
+                <section>
+                    <h3> On the SuperCollider IDE </h3>
+                    <hr>
+                    <p>The IDE provides client-side code that allows user to send OSC messages</p>
+                    <div class="fragment">
+                        <hr>
+                        <p>
+                            <span class="r-fit-text">
+                                By default, it uses the <code>s</code> server (<code>localhost:57110</code>)
+                            </span>
+                        </p>
+                    </div>
+                    <div class="fragment">
+                        <pre>
+<code data-line-numbers="1,4,5|7">~mySine = SynthDef("sine", {...}).add;
+
+// is equivalent to
+~mySine = SynthDef("sine", {...});
+~mySine.send(s);
+
+// write SynthDef to disk. .send(s) doesn't write to disk
+~mySine = SynthDef("sine", {...}).load(s);
+</code>                            
+                        </pre>
+                    </div>
+                </section>
+                <section>
+                    <h3> On the SuperCollider IDE </h3>
+                    <hr>
+                    <p> To play a Synth: </p>
+                    <pre>
+<code data-line-numbers="3,4,7,10">// play a Synth "\sine" with "freq" augument 900
+// x is used to keep track of the node number
+s.sendMsg("/s_new", "sine",
+        x = s.nextNodeID, 1, 1, "freq", 900);
+
+// to change the frequency of the Synth
+s.sendMsg("/n_set", x, "freq", 400);
+
+// to free the node
+s.sendMsg("/n_free", x);</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3 class="r-fit-text"> Usage of OSC outside of SuperCollider </h3>
+                    <hr>
+                    <p>
+                        OSC allows you to control the synthesizer server from a <b>different program</b>, or even a
+                        <b>different machine</b>!
+                    </p>
+                    <div class="fragment">
+                        <hr>
+                        <p>
+                            This includes but not limited to:
+                        <ul>
+                            <li>
+                                Python:
+                                <code><a href="https://python-osc.readthedocs.io/en/latest/">python-osc</a></code>
+                            </li>
+                            <li>
+                                JavaScript:
+                                <code><a href="https://www.npmjs.com/package/osc-js">osc-js</a></code>,
+                                <code><a href="https://www.npmjs.com/package/osc">osc</a></code>
+                            </li>
+                        </ul>
+                        </p>
+                    </div>
+                    <p class="fragment">We will use <code>python-osc</code> for our game later!</p>
                 </section>
             </section>
 
             <section id="step-9">
-                <h2> Step 9
-                </h2>
-                <hr>
-                <h2>
-                    <b> Practice </b>
-                </h2>
+                <section>
+                    <h2>
+                        Step 9
+                    </h2>
+                    <hr>
+                    <h2>
+                        <b> Extras </b>
+                    </h2>
+
+                    <p class="fragment">Just a brief introduction to the <i>endless possibility</i><br> you can do with
+                        SuperCollider.</p>
+                </section>
+                <section>
+                    <h3>
+                        Loop, repeat, & <code>Routine</code>
+                    </h3>
+                    <hr>
+                    <p>
+                        You can set up repeated tasks in SuperCollider using
+                        <span class="r-fit-text">
+                            a <code>n.do()</code>,
+                            a <code>Routine</code>, <code>.loop</code>, or <code>.repeat()</code> methods.
+                        </span>
+                    </p>
+                    <pre>
+<code>20.do({ |i|
+    i.postln; // print all numbers from 0 to 19
+});
+
+
+[1, 5, 3].do({ |i|
+	i.postln;  // print out 1, 5, 3
+});
+
+
+t = Task({ { "Yippee".postln; 1.wait; }.loop});
+t.start;
+t.stop;
+</code>
+                </section>
+                <section>
+                    <h3>
+                        <code>wait</code>
+                    </h3>
+                    <hr>
+                    <p>
+                        You can set up a time pause between events or tasks using the <code>.wait</code> method
+                        inside a <code>Task</code> or a <code>Routine</code>.
+                    </p>
+                </section>
+
+                <section>
+                    <h3>
+                        <code>wait</code>
+                    </h3>
+                    <hr>
+                    <pre >
+<code data-line-numbers="1,4,9,12" class="r-stretch">t = Task({
+    {
+        "Yippee".postln;
+        1.wait; // wait for 1 second
+    }.loop});
+t.start;
+t.stop;
+
+x = Routine(
+	10.do({
+		"Howdy".postln;
+		1.wait; // wait for 1 second
+    });
+)
+
+x.play();</code>
+                </section>
+                <section>
+                    <h2>MIDI</h2>
+                    <hr>
+                    <p>
+                        SuperCollider can also interact with MIDI devices, uses MIDI standards, etc.
+                    </p>
+                    <pre>
+<code>~E4midi = 64.midicps; // convert MIDI note to frequency
+
+MIDIClient.init; // Start the MIDI client
+MIDIIn
+MIDIOut
+MIDIFunc
+</code>
+                </section>
             </section>
 
-            <section id="step-10">
+            <section id="game">
                 <section>
                     <h1> Application </h1>
                     <p class="fragment"> Let's make a game! </p>
@@ -921,13 +1231,13 @@ SynthDef(\MyNote, {
                     - `\spin`: when the player spins
                         - Args: `xPosition`
                         
-                    `x`: -1 for most left, +1 for most right
+                    `xPosition`: -1 for most left, +1 for most right
                     </textarea>
                 </section>
 
                 <section data-markdown>
                     <textarea data-template="">
-                    
+
                     </textarea>
                 </section>
             </section>
@@ -954,7 +1264,8 @@ SynthDef(\MyNote, {
                         </div>
                         <div class="fragment">
                             <p>
-                                <a href="https://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC" target="_blank">
+                                <a href="https://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC"
+                                    target="_blank">
                                     <img src="./media/EliFieldsteel2.png" alt="Eli Fieldsteel YouTube Playlist">
                                 </a>
                             </p>

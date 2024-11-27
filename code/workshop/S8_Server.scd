@@ -1,18 +1,41 @@
 // https://doc.sccode.org/Guides/OSC_communication.html
 // https://doc.sccode.org/Tutorials/Server_Tutorial.html
 
-NetAddr.langPort;    // retrieve the current port SC is listening to
-NetAddr.localAddr    // retrieve the current IP and port
-thisProcess.openPorts; // list all open ports
-
 // Client and Server architecture. `s` is the default variable for a server
-s = Server("EpicECSESS", NetAddr("127.0.0.1", 57130)); // Create a server at localhost:57110
-s.boot();
-s.quit();
-s = Server("Testing", NetAddr("127.0.0.1", 51021));
-Server.supernova
-Server.all
+
+// Basic interaction with the server:
+// Boot the server
+s.boot;
+
+// Show the server address & port
+s.addr;
+
+// Quit the server
+s.quit;
+
+// Show the server output scope (time vs amplitude)
+s.scope;
+
+// Show the server input & output meter
+s.meter;
+
+// Create a server at localhost:57110, and set it as the default configuration
+s = Server("localhost", NetAddr("127.0.0.1", 57110));
+Server.default = s
+Server.all // display all exisiting servers
+
+// Declare a different server
+n = Server.new("ECSESS", NetAddr("localhost", port: 58124));
+n.boot; // works exactly like `s`
+
 Server.killAll
+Server.freeAll
+
+
+// Create a different scsynth server at a different address
+n = Server("Testing", NetAddr("127.0.0.1", 51021));
+n.boot;
+n.meter;
 
 OSCFunc.trace(true); // Turn posting on
 OSCFunc.trace(false); // Turn posting off
@@ -51,3 +74,6 @@ Routine({
     })
 }).play;
 )
+
+// Advanced use case: Multi-threading server
+Server.supernova
