@@ -887,7 +887,7 @@ SynthDef(\MyNote, {
     ~env = EnvGen.kr(env, doneAction: Done.freeSelf);
 
     // Equally panned on both channels
-    sound = Pan2.ar(sound*amp, 0, 1);
+    sound = Pan2.ar(sound, 0, 1);
 }).add;
 )</code></pre>
                 </section>
@@ -1114,6 +1114,32 @@ s.sendMsg("/n_free", x);</code>
                         SuperCollider.</p>
                 </section>
                 <section>
+                    <h2><code>sclang</code></h2>
+                    <hr>
+                    <p>
+                        <code>sclang</code> is the SuperCollider language interpreter. It behaves similarly to Python.
+                    </p>
+                    <div class="fragment">
+                        <hr>
+                        <p>
+                            You can run <i>.scd</i> files using <code>sclang</code> on the terminal.
+                        </p>
+                        <pre><code>sclang mysynth.scd</code></pre>
+                    </div>
+                </section>
+                <section>
+                    <h2 class="r-fit-text">Load different SuperCollider files</h2>
+                    <hr>
+                    <p>
+                        You can also load multiple different files with SynthDefs.
+                    </p>
+                    <div class="fragment">
+                        <hr>
+                        <pre><code>"mySynth1.scd".load;
+"mySynth2.scd".load;</code></pre>
+                    </div>
+                </section>
+                <section>
                     <h3>
                         Loop, repeat, & <code>Routine</code>
                     </h3>
@@ -1200,10 +1226,14 @@ MIDIFunc
                 <section data-markdown>
                     <textarea data-template>
                     ## Game time! 🎮
+                    ***
                     You will implement a Python Turtle game that uses OSC to synthetize sound effects.
                     ***
                     Link to the game template: [https://github.com/notkaramel/RunningBlobby](https://github.com/notkaramel/RunningBlobby)
 
+                    ```sh
+                    python --version    # to check if you have Python installed
+                    ```
                     ---
                     Set up the game repository:
                     ```sh
@@ -1213,32 +1243,43 @@ MIDIFunc
                     python3 -m venv .venv
                     source .venv/bin/activate
 
-                    pip install -r requirements.txt
+                    (.venv) pip install -r requirements.txt
 
-                    python main.py # to run the game
-
+                    # to run the game
+                    (.venv) python main.py 
                     ```
                     ---
-                    - Goal: Simulate *realtime* application of OSC in video game and *spatialized audio*
+                    **GOAL**: Create a game that uses OSC and SuperCollider to create *spatialized audio*
                     ---
                     ## Tasks
                     ***
-                    You will implement a few `SynthDef`s in SuperCollider 
+                    <p class="r-fit-text">
+                        You will implement a few <code>SynthDef</code>s in SuperCollider 
+                    </p>
+
                     - `\run`: when the player runs
-                        - Args: `xPosition`
                     - `\wall`: when the player hits the wall
-                        - Args: `xPosition`
                     - `\spin`: when the player spins
-                        - Args: `xPosition`
-                        
-                    `xPosition`: -1 for most left, +1 for most right
+                    
+                    <p class="r-fit-text">All SynthDefs takes <i>xPosition</i> and <i>yPosition</i> as arguments.</p>
+                    <p class="r-fit-text">Value range: -1 for most left/top, +1 for most right/bottom</p>
                     </textarea>
                 </section>
 
-                <section data-markdown>
-                    <textarea data-template="">
-
-                    </textarea>
+                <section>
+                    <h2>Play the game</h2>
+                    <hr>
+                    <p>
+                        Make sure you have a running SuperCollider server at <code>localhost:57110</code>.
+                        <hr>
+                        Run the game from the command line with
+                    </p>
+                    <pre><code>(.venv) python game.py</code></pre>
+                    <hr>
+                    <p>
+                        Use arrow keys to move the running blobby. <br>
+                        Press <code>Space</code> to spin.
+                    </p>
                 </section>
             </section>
 
