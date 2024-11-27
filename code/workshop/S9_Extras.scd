@@ -2,7 +2,7 @@
 
 #!/usr/bin/env sclang
 // -- THIS FILE IS FOR DEMO ONLY --
-// This file is executable from the terminal. 
+// This file is executable from the terminal.
 
 s = Server("SuperCollider", NetAddr("127.0.0.1", 57110));
 s.boot;
@@ -39,3 +39,12 @@ x = Routine( {
 
 x.play();
 
+// Play multiple notes
+(
+x = Routine( {
+	{ SinOsc.ar(64.midicps, Rand(0,2*pi)) * EnvGen.kr(Env([0, 1, 0.5], [0.01, 0.5]), doneAction: 2) }.play();
+	1.wait;
+	{ SinOsc.ar(68.midicps, Rand(0,2*pi)) * EnvGen.kr(Env([0, 1, 0], [0.5, 0.02, 0.5]), doneAction: 2) }.play();
+});
+)
+x.play
