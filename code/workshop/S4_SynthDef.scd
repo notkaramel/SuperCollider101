@@ -1,16 +1,3 @@
-// Start with simple Sinusoid Oscillator
-
-// Create a function with { }
-a = { SinOsc.ar(440) }; // A4
-a.play();
-
-// Stop the synth with `Ctrl + .`
-
-// Long variable name
-~longerNamedVariable = { SinOsc.ar([400, 401], 0, 0.1) * EnvGen.kr(Env.sine(10)) };
-~longerNamedVariable.play()
-
-(
 (
 SynthDef(\note, {
     arg freq = 550, amp = 0.5;
@@ -29,10 +16,10 @@ SynthDef(\note, {
 	/*Out.ar(IRand(0,1), sound*amp);
 	Out.ar(IRand(0,1), sound*amp);*/
 }).add;
-);
-~fun1 = Synth.new(\note, [\freq, 550]);
-// ~fun2 = Synth.new(\note, [\freq, 660]);
 )
+
+~fun1 = Synth.new(\note, [\freq, 550]);
+~fun2 = Synth.new(\note, [\freq, 660]);
 
 { SinOsc.ar(540, pi, 1) }.play();
 
