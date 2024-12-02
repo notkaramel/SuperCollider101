@@ -1,7 +1,7 @@
 {
-  "name": "presentation",
+  "name": "osc-workshop",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.4.8",
+    "vite": "^6.0.1",
     "@types/bun": "latest"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@types/reveal.js": "^5.0.3",
+    "@types/reveal.js": "^5.0.4",
     "reveal.js": "^5.1.0"
   }
 }

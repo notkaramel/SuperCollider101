@@ -6,6 +6,8 @@ on:
     paths:
         - ".github/workflows/**"
         - "presentation/**"
+        - "package.json"
+        - "index.html"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -34,19 +36,15 @@ jobs:
       - name: Set up bun
         uses: oven-sh/setup-bun@v2
       - name: Install dependencies
-        run: |
-            cd presentation
-            bun i
+        run: bun i
       - name: Build Webpage
-        run: |
-            cd presentation
-            bun run build -- --base='/MUMT306'
+        run: bun run build -- --base='/MUMT306'
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload Page artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './presentation/dist' # Upload build
+          path: './dist' # Upload build
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
