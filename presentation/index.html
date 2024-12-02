@@ -248,6 +248,15 @@
                         <code>Ctrl D</code> or <code>Cmd D</code> with the cursor on the code.
                     </p>
                 </section>
+                <section>
+                    <h2>Documentation</h2>
+                    <hr>
+                    <p>
+                        You can play with the example codes on the documentation with <code>Ctrl Enter</code> or
+                        <code>Cmd Enter</code>
+                    </p>
+                    <img src="./media/SinOscExampleDoc.png" alt="Examples of SinOsc on the documentation">
+                </section>
             </section>
 
             <section id="step-3">
@@ -255,15 +264,12 @@
                     <h2> Step 3: SC Basics </h2>
                     <hr>
                     <p> Let's start with making a sinusoid wave! </p>
-                    <code>
-                        { SinOsc.ar(440, 0, 0.2) }.play;
-                    </code>
                 </section>
 
                 <section>
                     <p> 3.1. Create a <code>SinOsc</code> object with the params: </p>
                     <code>
-                        SinOsc.ar(440, 0, 0.2);
+                        SinOsc.ar(440);
                     </code>
                     <p>
                         You can always check the documentation:
@@ -271,12 +277,23 @@
                     <img src="./media/SinOsc.png" alt="SinOsc methods">
                 </section>
                 <section>
+                    <p> 3.1. Create a <code>SinOsc</code> object with the params: </p>
+                    <code>
+                        SinOsc.ar(440);
+                    </code>
+                    <p class="r-fit-text">
+                        <i>
+                            Note: Unspecified parameter(s) will use the default value(s)!!
+                        </i>
+                    </p>
+                </section>
+                <section>
                     <p>
                         3.2. Wrap the oscillator with curly brackets. <br>
                         You now have a <code>Function</code>
                     </p>
                     <code>
-                        { SinOsc.ar(440, 0, 0.2) };
+                        { SinOsc.ar(440) };
                     </code>
                 </section>
                 <section>
@@ -284,7 +301,7 @@
                         3.3. You can add <code>.play</code> to play the <code>Function</code> to make it play the sound!
                     </p>
                     <code>
-                        { SinOsc.ar(440, 0, 0.2) }.play;
+                        { SinOsc.ar(440) }.play;
                     </code>
                 </section>
 
@@ -294,13 +311,18 @@
                         with the cursor on the line to play the sine wave
                     </p>
                     <code>
-                        { SinOsc.ar(440, 0, 0.2) }.play;
+                        { SinOsc.ar(440) }.play;
                     </code>
                     <p> It's a pure A4 signal! </p>
 
                     <div class="fragment">
                         <hr>
-                        <i>Oh and, <code>Ctrl B</code> / <code> Cmd B</code> to start the SC local server!</i>
+                        <p>
+                            <i class="r-fit-text">
+                                Oh and, <code>Ctrl B</code> / <code> Cmd B</code> to
+                                start the <code>scsynth</code> local server!
+                            </i>
+                        </p>
                     </div>
                 </section>
                 <section>
@@ -309,7 +331,7 @@
                         to stop the audio playing
                     </p>
                     <code>
-                        { SinOsc.ar(440, 0, 0.2) }.play;
+                        { SinOsc.ar(440) }.play;
                     </code>
                 </section>
                 <section>
@@ -370,7 +392,7 @@
 <code data-line-numbers="2|3|4|5|6" data-noescape>    // Create a new Synth Definition
     SynthDef.new(\Sinusoid, {
         var freq = 440; // A4
-        var sinFunc = SinOsc.ar(freq)
+        var sinFunc = SinOsc.ar(freq);
         Out.ar(0, sinFunc);
     }).add;
 </code>
@@ -389,7 +411,7 @@
     // Create a new Synth Definition
     SynthDef.new(\Sinusoid, {
         var freq = 440; // A4
-        var sinFunc = SinOsc.ar(freq)
+        var sinFunc = SinOsc.ar(freq);
         Out.ar(0, sinFunc);
     }).add;
 )
@@ -572,7 +594,7 @@ Pink.ar(mul: 1.0, add: 0.0);
                     <div class="fragment">
                         <pre>
 <code>{
-    var freq = 200, amp = 1;
+    var freq = 400, amp = 1;
     SinOsc.ar(freq, 0, amp)
     + SinOsc.ar(freq*2, 0, amp/2)
     + SinOsc.ar(freq*4, 0, amp/4)
@@ -655,7 +677,7 @@ FreqScope(500, 400, 0, s);
                         <code>Env</code> example
                     </h3>
                     <hr>
-                    <pre><code>~envFunc = Env.perc(0.2, 0.7, 1.0, -3.0);</code></pre>
+                    <pre><code>~envFunc = Env.perc(0.1, 0.7);</code></pre>
                     <img src="./media/EnvPerc.png" alt="Percussive Envelope" class="r-stretch">
                     <p class="r-fit-text">This is also called an <b>Attack-Release</b> envelope</p>
                 </section>
@@ -688,8 +710,7 @@ FreqScope(500, 400, 0, s);
                 </section>
                 <section>
                     <img src="./media/ADSREnv.png" alt="ADSR Envelope, from Native Instrument" class="r-stretch">
-                    <a href="https://blog.native-instruments.com/adsr-explained/" target="_blank"
-                        class="r-fit-text">
+                    <a href="https://blog.native-instruments.com/adsr-explained/" target="_blank" class="r-fit-text">
                         https://blog.native-instruments.com/adsr-explained/
                     </a>
                 </section>
@@ -741,7 +762,7 @@ FreqScope(500, 400, 0, s);
                     </h3>
                     <hr>
                     <pre>
-<code data-line-numbers="2|*">~envFunc = Env.perc(0.2, 0.7, 1.0, -3.0);
+<code data-line-numbers="2|*">~envFunc = Env.perc(0.1, 0.7);
 EnvGen.kr(~envFunc, doneAction: Done.freeSelf);</code>
                     </pre>
                 </section>
@@ -751,9 +772,9 @@ EnvGen.kr(~envFunc, doneAction: Done.freeSelf);</code>
                     <pre>
 <code>(
 {
-    ~envFunc = Env.perc(0.2, 0.7, 1.0, -3.0);
-    ~env = EnvGen.kr(env, doneAction: Done.freeSelf);
-    SinOsc.ar(440) * env;
+    ~envFunc = Env.perc(0.1, 0.7);
+    ~env = EnvGen.kr(~envFunc, doneAction: Done.freeSelf);
+    SinOsc.ar(440) * ~env;
 }.play
 )
 </code>
@@ -898,18 +919,22 @@ Out.ar(bus:1, mySynth);</code>
                     <pre>
 <code data-line-numbers="3,4,5,8,9,11,12|*">// Making a note
 (
-SynthDef(\MyNote, {
-    | freq = 550, amp = 0.5 |
-    var rootOsc = SinOsc.ar(freq, 1, amp);
-    
+SynthDef(\MyNote, { | freq = 440, amp = 0.5 |
+    // Create a wave
+    ~wave = SinOsc.ar(freq, 1, amp);
+
     // Envelope the sound
-    ~envFunc = Env.perc(0.2, 0.7, 1.0, -3.0);
-    ~env = EnvGen.kr(env, doneAction: Done.freeSelf);
+    ~envFunc = Env.perc(0.1, 0.7);
+    ~env = EnvGen.kr(~envFunc, doneAction: Done.freeSelf);
+
+    ~sound = ~wave * ~env;
 
     // Equally panned on both channels
-    sound = Pan2.ar(sound, 0, 1);
-}).add;
-)</code></pre>
+    Out.ar(0, Pan2.ar(~sound, 0));
+}).add
+)
+
+Synth("MyNote")</code></pre>
                 </section>
                 <section>
                     <h3>
@@ -1230,6 +1255,9 @@ x.play();</code>
                     <pre>
 <code>~E4midi = 64.midicps; // convert MIDI note to frequency
 
+// Example: Play a MIDI note 
+{ SinOsc.ar(64.midicps); }.play(); 
+
 MIDIClient.init; // Start the MIDI client
 MIDIIn
 MIDIOut
@@ -1277,7 +1305,7 @@ MIDIFunc
                         You will implement a few <code>SynthDef</code>s in SuperCollider 
                     </p>
 
-                    - `\run`: when the player runs
+                    - `\walk`: when the player runs
                     - `\wall`: when the player hits the wall
                     - `\spin`: when the player spins
                     
