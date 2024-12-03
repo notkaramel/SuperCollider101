@@ -6,84 +6,199 @@
     <!-- Attribute to alfanz https://www.flaticon.com/authors/alfanz on Flaticon -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/serif.css" />
+    <script src="/index.ts" type="module"></script>
     <title> MUMT 306 Project </title>
 </head>
 
 <body>
-    <div id="content">
+    <div class="reveal">
+        <div class="slides">
+            <section id="landing">
+                <h1>
+                    <span class="r-fit-text">
+                        Introduction to Open Sound Control
+                    </span><br>
+                    <span class="r-fit-text">
+                        &amp;
+                        the SuperCollider IDE Workshop
+                    </span>
+                </h1>
+                <hr>
+                <div>
+                    <b>
+                        <a href="./presentation/">
+                            [ View the workshop presentation ]
+                        </a>
+                    </b>
+                    <br>
+                    <b>
 
-        <h1 id="introduction-to-open-sound-control-supercollider-ide-workshop">Introduction to Open Sound Control &amp;
-            SuperCollider IDE Workshop</h1>
-        <p>License: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p>
+                        <a href="https://github.com/notkaramel/RunningBlobby" target="_blank">
+                            [ View the game project ]
+                        </a>
+                    </b>
+                </div>
+                <hr>
+                <div>
+                    <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+                        <img src="/media/by-sa.svg" alt="Creative Commons BY-SA 4.0">
+                    </a>
+                </div>
+            </section>
 
+            <section id="intention">
+                <p>
+                    This project was intended to be the final project for
+                    <b>
+                        <a href="https://www.music.mcgill.ca/~gary/306/">
+                            MUMT 306 - Music &amp; Audio Computing I.
+                        </a>
+                    </b>
+                    <br>
+                    <br>
+                    It was also a <b>
+                        <a href="https://www.instagram.com/p/DCpADThv1sm/" target="_blank">
+                            Music Tech Workshop
+                        </a>
+                    </b>hosted by the Electrical, Computer,
+                    and Software Engineering Student Society at McGill (<a
+                        href="https://www.instagram.com/mcgill_ecsess/" target="_blank">ECSESS</a>)
+                </p>
+            </section>
 
-        <p> This project is intended to be a project for
-            <a href="https://www.music.mcgill.ca/~gary/306/">
-                MUMT 306 - Music &amp; Audio Computing I
-            </a>
-            and also as a Music Tech Workshop hosted by Electrical, Computer,
-            and Software Engineering Student Society at McGill (ECSESS)
-        </p>
+            <section id="goals">
+                <h2> Goals </h2>
+                <hr>
+                <p>
+                    The goal of this project is to introduce
+                </p>
+                <ul class="r-fit-text">
+                    <li> The Open Sound Control (OSC) protocol standard </li>
+                    <li> <a href="https://supercollider.github.io" target="_blank">
+                            SuperCollider (<code>sclang</code>)
+                        </a>
+                        and the SuperCollider IDE (<code>scide</code>) </li>
+                    <li> The client-server architecture of SuperCollider (<code>scsynth</code>)</li>
+                    <li> Application of OSC in spatialized and real-time audio synthesis </li>
+                </ul>
+            </section>
 
-        <h2> Goals </h2>
-        <p>
-            The goal of this project is to introduce
-        </p>
-        <ul>
-            <li> The Open Sound Control (OSC) protocol standard </li>
-            <li> <a href="https://supercollider.github.io" target="_blank">
-                    SuperCollider (<code>sclang</code>)
-                </a>
-                and the SuperCollider IDE (<code>scide</code>) </li>
-            <li> The client-server architecture of SuperCollider </li>
-            <li> Application of OSC in spatialized and real-time audio synthesis </li>
-        </ul>
+            <section id="motivation">
+                <h2> Motivation </h2>
+                <hr>
+                <p>
+                    I've worked (albeit <i>indirectly</i>) with SuperCollider in the past with project
+                    <a href="https://image.a11y.mcgill.ca" target="_blank">IMAGE</a> at the Shared Reality Lab.
+                </p>
+                <p>
+                    I was blown away by the capabilities of SuperCollider and the joy of creating sounds from simple
+                    sinusoid waves that I learned from my Signal Processing classes.
+                </p>
+                <p>
+                    Since OSC is relatively less popular to MIDI, I wanted to spread the word about this amazing
+                    technology via a workshop with SuperCollider.
+                </p>
+            </section>
 
-        <h2 id="folders"> Project structure </h1>
-            <p> This project contains 2 main parts: </p>
-            <ul>
-                <li>
-                    <p>
-                        A <b><a href="./presentation/">presentation</a></b> that introduces the OSC protocol and
-                        SuperCollider IDE.
-                        It containts the step-by-step guide to SuperCollider
-                    </p>
-                </li>
-                <li>
-                    <p>
-                        A simple game that uses SuperCollider as its sound synthesizer for realtime
-                        and spatialized audio effects. (Licensed under MIT License)
-                    </p>
-                </li>
-            </ul>
+            <section id="structure">
+                <h2> Project structure </h2>
+                <hr>
+                <p> This project contains 2 main parts: </p>
+                <ul>
+                    <li>
+                        <p>
+                            <b><a href="./presentation/">Presentation</a></b>: An brief introduction & history of
+                            the OSC protocol, along with a step-by-step beginner's guide to SuperCollider to create
+                            simple sounds.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b><a href="https://github.com/notkaramel/RunningBlobby" target="_blank">"Running Blobby"
+                                    game</a></b>:
+                            a Python game that uses SuperCollider to synthesize realtime
+                            and spatialized audio effects. (Licensed under <i>MIT License</i>)
+                        </p>
+                    </li>
+                </ul>
+            </section>
 
-            <h2> Motivation </h2>
-            <p>
-                I've worked (albeit <i>indirectly</i>) with SuperCollider in the past with project
-                <a href="https://image.a11y.mcgill.ca" target="_blank">IMAGE</a>. I was blown away
-                by the capabilities of SuperCollider and the joy of creating sounds from simple
-                sinusoid waves that I learned from my Signal Processing classes. I truly think that
+            <section id="timeline">
+                <h2> Timeline </h2>
+                <hr>
+                <ul class="r-fit-text">
+                    <li>
+                        <b>September:</b> Ideation and structural planning of the project.
+                    </li>
+                    <li>
+                        <b>October (1/2)</b> Draft of the presentation and development of the "application".
+                    </li>
+                    <li>
+                        <b>October (2/2)</b> Consulted with my old mentor + finalized project idea.
+                    </li>
+                    <li>
+                        <b>November:</b> Finalized the presentation, workshop plan, and game.
+                    </li>
+                    <li>
+                        <b>November 27th, 2024:</b> Workshop presentation at McGill University.
+                    </li>
+                    <li>
+                        <b>December:</b> Finalized the project and this summary presentation.
+                    </li>
+                </ul>
+            </section>
+            <section id="difficulties">
+                <h2> Difficulties </h2>
+                <hr>
+                <p>
+                    The main difficulties were the <b>time constraint</b>, <b>content selection</b> for the workshop
+                    presentation, and <b>adapting OSC in Python to work with SuperCollider</b> for the game.
+                </p>
+            </section>
+            <section id="difficulties-content-selection">
+                <h2 class="r-fit-text"> Difficulties: Content selection </h2>
+                <hr>
+                <p>
+                    SuperCollider is a <b>vast and complex software</b>, and given the <i>2-hour time limit</i> for the workshop,
+                    I had to carefully select the content to be presented to the audience so that they can
+                    understand and follow along, assuming <b>zero prior knowledge of the software</b>.
+                </p>
+            </section>
 
-            </p>
-            <p>
-                Hence,
-            </p>
+            <section id="remaining-tasks">
+                <h2>
+                    Remaining tasks
+                </h2>
+                <hr>
+                <img src="/media/project_complete.jpg" alt="Project Completion Fake Linked Post" class="r-stretch">
+            </section>
+            <section id="demo">
+                <h2> Demo </h2>
+                <hr>
+                <div>
+                    <b>
+                        <a href="./presentation/">
+                            🧑‍🏫 Workshop Presentation 
+                        </a>
+                    </b>
+                    <hr>
+                    <b>
 
+                        <a href="https://github.com/notkaramel/RunningBlobby" target="_blank">
+                            👾 "Running Blobby" Game 
+                        </a>
+                    </b>
+                </div>
+            </section>
+            <section id="thank-you">
+                <h1>
+                    Thank you! 🎉
+                </h1>
+            </section>
+        </div>
     </div>
 
 </body>
-
-<style>
-    .body {
-        display: flex;
-        justify-content: center;
-        /* align-items: center; */
-        height: 100vh;
-    }
-
-    .content {
-        width: max(50vw, 1000px);
-    }
-</style>
-
 </html>

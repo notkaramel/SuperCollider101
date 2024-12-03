@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/dracula.css" />
-    <script src="./index.ts" type="module"></script>
+    <script src="/index.ts" type="module"></script>
     <title> OSC Workshop </title>
 </head>
 
@@ -227,7 +227,7 @@
                         <hr>
                         You should get this on the post window.
                         <br>
-                        <img src="./media/HelloWorldPost.png" alt="Hello World on post">
+                        <img src="/media/HelloWorldPost.png" alt="Hello World on post">
                     </div>
                 </section>
                 <section>
@@ -238,7 +238,7 @@
                         <br>
                         You can access it by pressing <code>Ctrl Shift D</code> or <code>Cmd Shift D</code>
                     </p>
-                    <img src="./media/DocumentationPopup.png" alt="Documentation Pop-up">
+                    <img src="/media/DocumentationPopup.png" alt="Documentation Pop-up">
                 </section>
                 <section>
                     <h2>Documentation</h2>
@@ -255,7 +255,7 @@
                         You can play with the example codes on the documentation with <code>Ctrl Enter</code> or
                         <code>Cmd Enter</code>
                     </p>
-                    <img src="./media/SinOscExampleDoc.png" alt="Examples of SinOsc on the documentation">
+                    <img src="/media/SinOscExampleDoc.png" alt="Examples of SinOsc on the documentation">
                 </section>
             </section>
 
@@ -274,7 +274,7 @@
                     <p>
                         You can always check the documentation:
                     </p>
-                    <img src="./media/SinOsc.png" alt="SinOsc methods">
+                    <img src="/media/SinOsc.png" alt="SinOsc methods">
                 </section>
                 <section>
                     <p> 3.1. Create a <code>SinOsc</code> object with the params: </p>
@@ -548,7 +548,7 @@ x = Synth(\OtherSinusoid, [\freq, 400, \amp, 0.4]);</code>
                     </i>
                     <hr>
                     <div class="r-stack r-stretch">
-                        <img class="fragment fade-out" src="./media/Noises.png" alt="SuperCollider Noises">
+                        <img class="fragment fade-out" src="/media/Noises.png" alt="SuperCollider Noises">
                         <div class="fragment">
                             <pre>
 <code data-line-numbers="2,5,8,11">// Brown Noise
@@ -656,7 +656,7 @@ FreqScope(500, 400, 0, s);
 ).plot;
 </code>
 </pre>
-                    <img src="./media/EnvExample.png" alt="Example of an envelope function" class="r-stretch">
+                    <img src="/media/EnvExample.png" alt="Example of an envelope function" class="r-stretch">
                 </section>
                 <section>
                     <h3>
@@ -678,7 +678,7 @@ FreqScope(500, 400, 0, s);
                     </h3>
                     <hr>
                     <pre><code>~envFunc = Env.perc(0.1, 0.7);</code></pre>
-                    <img src="./media/EnvPerc.png" alt="Percussive Envelope" class="r-stretch">
+                    <img src="/media/EnvPerc.png" alt="Percussive Envelope" class="r-stretch">
                     <p class="r-fit-text">This is also called an <b>Attack-Release</b> envelope</p>
                 </section>
                 <section>
@@ -709,7 +709,7 @@ FreqScope(500, 400, 0, s);
                         class="r-fit-text">Env.adsr(attackTime: 0.01, decayTime: 0.3, sustainLevel: 0.5, releaseTime: 1.0, peakLevel: 1.0, curve: -4.0, bias: 0.0)</code>
                 </section>
                 <section>
-                    <img src="./media/ADSREnv.png" alt="ADSR Envelope, from Native Instrument" class="r-stretch">
+                    <img src="/media/ADSREnv.png" alt="ADSR Envelope, from Native Instrument" class="r-stretch">
                     <a href="https://blog.native-instruments.com/adsr-explained/" target="_blank" class="r-fit-text">
                         https://blog.native-instruments.com/adsr-explained/
                     </a>
@@ -974,7 +974,7 @@ Synth("MyNote")</code></pre>
                         </span>
                     </p>
                     <div class="fragment">
-                        <img src="./media/HRTF_mathworks.png" alt="HRTF" class="r-stretch">
+                        <img src="/media/HRTF_mathworks.png" alt="HRTF" class="r-stretch">
                     </div>
                     </pre>
                 </section>
@@ -992,20 +992,20 @@ Synth("MyNote")</code></pre>
                     <p><i>The client-server architecture</i></p>
                     <hr>
                     <div class="r-stack r-stretch">
-                        <img src="./media/Arch1.png" alt="Client only" class="fragment fade-in-and-out">
-                        <img src="./media/Arch2.png" alt="s.boot sent" class="fragment fade-in-and-out">
-                        <img src="./media/Arch3.png" alt="scsynth spawned" class="fragment fade-in-and-out">
-                        <img src="./media/Arch4.png" alt="Default port and host" class="fragment fade-in-and-out">
-                        <img src="./media/Arch5.png" alt="Create a SynthDef" class="fragment fade-in-and-out">
-                        <img src="./media/Arch6.png" alt="Send the SynthDef" class="fragment fade-in-and-out">
-                        <img src="./media/Arch7.png" alt="OSC message" class="fragment fade-in-and-out">
-                        <img src="./media/Arch8.png" alt="UDP Response" class="fragment fade-in-and-out">
-                        <img src="./media/Arch9.png" alt="Play the synth" class="fragment fade-in-and-out">
-                        <img src="./media/Arch10.png" alt="OSC message of play command"
+                        <img src="/media/Arch1.png" alt="Client only" class="fragment fade-in-and-out">
+                        <img src="/media/Arch2.png" alt="s.boot sent" class="fragment fade-in-and-out">
+                        <img src="/media/Arch3.png" alt="scsynth spawned" class="fragment fade-in-and-out">
+                        <img src="/media/Arch4.png" alt="Default port and host" class="fragment fade-in-and-out">
+                        <img src="/media/Arch5.png" alt="Create a SynthDef" class="fragment fade-in-and-out">
+                        <img src="/media/Arch6.png" alt="Send the SynthDef" class="fragment fade-in-and-out">
+                        <img src="/media/Arch7.png" alt="OSC message" class="fragment fade-in-and-out">
+                        <img src="/media/Arch8.png" alt="UDP Response" class="fragment fade-in-and-out">
+                        <img src="/media/Arch9.png" alt="Play the synth" class="fragment fade-in-and-out">
+                        <img src="/media/Arch10.png" alt="OSC message of play command"
                             class="fragment fade-in-and-out">
-                        <img src="./media/Arch11.png" alt="Server plays the Synth" class="fragment fade-in-and-out">
-                        <img src="./media/Arch12.png" alt="Terminate command" class="fragment fade-in-and-out">
-                        <img src="./media/Arch13.png" alt="Server stops playing" class="fragment fade-in-and-out">
+                        <img src="/media/Arch11.png" alt="Server plays the Synth" class="fragment fade-in-and-out">
+                        <img src="/media/Arch12.png" alt="Terminate command" class="fragment fade-in-and-out">
+                        <img src="/media/Arch13.png" alt="Server stops playing" class="fragment fade-in-and-out">
                     </div>
                     <div class="fragment">
                         <i>Note: </i> the client is called <code>sclang</code>.
@@ -1346,7 +1346,7 @@ MIDIFunc
                         <div class="fragment fade-out">
                             <p>
                                 <a href="https://www.youtube.com/@elifieldsteel" target="_blank">
-                                    <img src="./media/EliFieldsteel.png" alt="Eli Fieldsteel YouTube Channel">
+                                    <img src="/media/EliFieldsteel.png" alt="Eli Fieldsteel YouTube Channel">
                                     https://www.youtube.com/@elifieldsteel
                                 </a>
                             </p>
@@ -1355,7 +1355,7 @@ MIDIFunc
                             <p>
                                 <a href="https://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC"
                                     target="_blank">
-                                    <img src="./media/EliFieldsteel2.png" alt="Eli Fieldsteel YouTube Playlist">
+                                    <img src="/media/EliFieldsteel2.png" alt="Eli Fieldsteel YouTube Playlist">
                                 </a>
                             </p>
                         </div>
