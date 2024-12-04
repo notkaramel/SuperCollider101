@@ -13,4 +13,5 @@ new Reveal({
     ]
 }).initialize({
     slideNumber: 'h/v',
+    autoPlayMedia: true,
 });
