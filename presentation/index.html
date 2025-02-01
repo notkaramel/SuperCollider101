@@ -2,393 +2,377 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <!-- Attribute to alfanz https://www.flaticon.com/authors/alfanz on Flaticon -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
-    <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/dracula.css" />
-    <script src="/index.js" type="module"></script>
-    <title> OSC Workshop </title>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <!-- Attribute to alfanz https://www.flaticon.com/authors/alfanz on Flaticon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
+  <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/dracula.css" />
+  <script src="/index.js" type="module"></script>
+  <title> OSC Workshop </title>
 </head>
 
 <body>
-    <div class="reveal">
-        <div class="slides">
-            <section id="introduction">
-                <section id="title">
-                    <h2>
-                        Music Tech Workshop
-                    </h2>
-                    <hr>
-                    <h3>
-                        <b> Open Sound Control (OSC) </b>
-                        <br>
-                        <b>
-                            & SuperCollider
-                        </b>
-                    </h3>
-                    <p>
-                        <i>
-                            by Antoine (@notkaramel)
-                        </i>
-                    </p>
-                </section>
+  <div class="reveal">
+    <div class="slides">
+      <section id="introduction">
+        <section id="title">
+          <h2>
+            Music Tech Workshop
+          </h2>
+          <hr>
+          <h3>
+            <b> Open Sound Control (OSC) </b>
+            <br>
+            <b>
+              & SuperCollider
+            </b>
+          </h3>
+          <p>
+            <i>
+              by Antoine (@notkaramel)
+            </i>
+          </p>
+        </section>
 
-                <section id="tableOfContent">
-                    <h3> Sections </h3>
-                    <hr>
-                    <p>
-                        <span><a href="#/whyOSC"> Why use OSC? What is SuperCollider </a></span>
-                        <hr>
-                        <span><a href="#/step-1"> 1. Install </a></span> ~
-                        <span><a href="#/step-2"> 2. Getting Started </a></span>
-                        <br>
-                        <span><a href="#/step-3"> 3. SC Basics </a></span> ~
-                        <span><a href="#/step-4"> 4. Synth & SynthDef </a></span>
-                        <br>
-                        <span><a href="#/step-5"> 5. Signal Processing </a></span> ~
-                        <span><a href="#/step-6"> 6. Envelope </a></span>
-                        <br>
-                        <span><a href="#/step-7"> 7. Output & Panning </a></span> ~
-                        <span><a href="#/step-8"> 8. Server, OSC </a></span>
-                        <br>
-                        <span><a href="#/step-9"> 9. Extras </a></span>
-                        <br>
-                        <span>
-                            <b>
-                                <a href="#/game"> 🌟 Game time! 🌟 </a>
-                            </b>
-                        </span>
-                    </p>
-                </section>
+        <section id="tableOfContent">
+          <h3> Sections </h3>
+          <hr>
+          <p>
+            <span><a href="#/whyOSC"> Why use OSC? What is SuperCollider </a></span>
+            <hr>
+            <span><a href="#/step-1"> 1. Install </a></span> ~
+            <span><a href="#/step-2"> 2. Getting Started </a></span>
+            <br>
+            <span><a href="#/step-3"> 3. SC Basics </a></span> ~
+            <span><a href="#/step-4"> 4. Synth & SynthDef </a></span>
+            <br>
+            <span><a href="#/step-5"> 5. Signal Processing </a></span> ~
+            <span><a href="#/step-6"> 6. Envelope </a></span>
+            <br>
+            <span><a href="#/step-7"> 7. Output & Panning </a></span> ~
+            <span><a href="#/step-8"> 8. Server, OSC </a></span>
+            <br>
+            <span><a href="#/step-9"> 9. Extras </a></span>
+            <br>
+            <span>
+              <b>
+                <a href="#/game"> 🌟 Game time! 🌟 </a>
+              </b>
+            </span>
+          </p>
+        </section>
 
-                <section id="prerequisite">
-                    <h3> Prerequisite knowledge</h3>
-                    <hr>
-                    <p>
-                        It is recommended that you have some background knowledge on
-                    <ul>
-                        <li>
-                            <b>Object Oriented Programming (OOP) </b>
-                        </li>
-                        <li>
-                            <b>Signal processing</b>
-                        </li>
-                        <li>
-                            <b>The client-server architecture</b>
-                        </li>
-                        <li>
-                            <b>Network protocol (UDP, HTTP, TCP)</b>
-                        </li>
-                    </ul>
-                    </p>
-                </section>
+        <section id="prerequisite">
+          <h3> Prerequisite knowledge</h3>
+          <hr>
+          <p>
+            It is recommended that you have some background knowledge on
+          <ul>
+            <li>
+              <b>Object Oriented Programming (OOP) </b>
+            </li>
+            <li>
+              <b>Signal processing</b>
+            </li>
+            <li>
+              <b>The client-server architecture</b>
+            </li>
+            <li>
+              <b>Network protocol (UDP, HTTP, TCP)</b>
+            </li>
+          </ul>
+          </p>
+        </section>
 
-                <section id="links">
-                    <h2>Links</h2>
-                    <hr>
-                    <p>Project Presentation:</p>
-                    <a href="https://notkaramel.github.io/MUMT306/" target="_blank">
-                        https://notkaramel.github.io/MUMT306/
-                    </a>
-                    <p>Project Source Code:</p>
-                    <a href="https://github.com/notkaramel/MUMT306" target="_blank">
-                        https://github.com/notkaramel/MUMT306
-                    </a>
-                </section>
-            </section>
+        <section id="links">
+          <h2>Links</h2>
+          <hr>
+          <p>Project Source Code:</p>
+          <a href="https://github.com/notkaramel/OSC-SuperCollider-Workshop" target="_blank">
+            github.com/notkaramel/OSC-SuperCollider-Workshop
+          </a>
+        </section>
+      </section>
 
-            <section id="whyOSC">
-                <section>
-                    <h3 class="fragment">What is Open Sound Control?</h3>
-                    <br>
-                    <h3 class="fragment">Why use OSC?</h3>
-                    <br>
-                    <h3 class="fragment">Why not use MIDI???</h3>
-                    <br>
-                    <h3 class="fragment">What is SuperCollider?</h3>
-                </section>
-                <section>
-                    <h3>
-                        "What is Open Sound Control?"
-                    </h3>
-                    <hr>
-                    <div class="fragment">
-                        <p>
-                            <b> Open Sound Control (OSC)</b> is a communication
-                            protocol for <i>computers</i>, <i>sound synthesizers</i>, and other
-                            <i>multimedia devices</i> that is <i>optimized for modern networking</i>.
-                        </p>
-                        <blockquote>
-                            <a href="https://ccrma.stanford.edu/groups/osc/files/1997-ICMC-OSC.pdf">
-                                OSC Proposal at ICMC, 1997
-                            </a>
-                        </blockquote>
-                        <hr>
-                    </div>
-                    <div class="fragment">
-                        <p>
-                            <b>OSC</b> is designed as a <i>highly accurate</i>, <i>low latency</i>,
-                            <i>lightweight</i>, and <i>flexible</i> method of communication for
-                            use in <i>realtime musical performance</i>.
-                        </p>
-                        <blockquote>
-                            <a href="https://opensoundcontrol.stanford.edu">
-                                OpenSourceControl website
-                            </a>
-                        </blockquote>
-                    </div>
-                </section>
-                <section>
-                    <h3>
-                        "Why use OSC?"
-                        <br>
-                        "Why not use MIDI?"
-                    </h3>
-                    <hr>
-                    <div class="fragment">
-                        <p>
-                            In a way, <b>OSC</b> is a <i>more flexible alternative</i> to <b>MIDI</b>.
-                        </p>
-                        <hr>
-                    </div>
-                    <p class="fragment">
-                        <b>MIDI</b> is a protocol standard made for
-                        <i>hardware synthesizer</i> with <i>electrical circuit limitations</i>.
-                        Meanwhile, <b>OSC</b> travels through the internet via UDP (or User Datagram Protocol).
-                    </p>
-                </section>
-                <section>
-                    <h3>
-                        "What is SuperCollider?"
-                    </h3>
-                    <hr>
-                    <div class="fragment">
-                        <p>
-                            In this workshop, we will <b>not</b> go into the <b>encoding of OSC</b>
-                            and all the nitty gritty details of it.
-                        </p>
-                        <hr>
-                    </div>
-                    <p class="fragment">
-                        We will use a program called <b>SuperCollier</b> to use and interact directly with OSC and
-                        create an application using it.
-                    </p>
-                </section>
-            </section>
+      <section id="whyOSC">
+        <section>
+          <h3 class="fragment">What is Open Sound Control?</h3>
+          <br>
+          <h3 class="fragment">Why use OSC?</h3>
+          <br>
+          <h3 class="fragment">Why not use MIDI???</h3>
+          <br>
+          <h3 class="fragment">What is SuperCollider?</h3>
+        </section>
+        <section>
+          <h3>
+            "What is Open Sound Control?"
+          </h3>
+          <hr>
+          <div class="fragment">
+            <p>
+              <b> Open Sound Control (OSC)</b> is a communication
+              protocol for <i>computers</i>, <i>sound synthesizers</i>, and other
+              <i>multimedia devices</i> that is <i>optimized for modern networking</i>.
+            </p>
+            <blockquote>
+              <a href="https://ccrma.stanford.edu/groups/osc/files/1997-ICMC-OSC.pdf">
+                OSC Proposal at ICMC, 1997
+              </a>
+            </blockquote>
+            <hr>
+          </div>
+          <div class="fragment">
+            <p>
+              <b>OSC</b> is designed as a <i>highly accurate</i>, <i>low latency</i>,
+              <i>lightweight</i>, and <i>flexible</i> method of communication for
+              use in <i>realtime musical performance</i>.
+            </p>
+            <blockquote>
+              <a href="https://opensoundcontrol.stanford.edu">
+                OpenSourceControl website
+              </a>
+            </blockquote>
+          </div>
+        </section>
+        <section>
+          <h3>
+            "Why use OSC?"
+            <br>
+            "Why not use MIDI?"
+          </h3>
+          <hr>
+          <div class="fragment">
+            <p>
+              In a way, <b>OSC</b> is a <i>more flexible alternative</i> to <b>MIDI</b>.
+            </p>
+            <hr>
+          </div>
+          <p class="fragment">
+            <b>MIDI</b> is a protocol standard made for
+            <i>hardware synthesizer</i> with <i>electrical circuit limitations</i>.
+            Meanwhile, <b>OSC</b> travels through the internet via UDP (or User Datagram Protocol).
+          </p>
+        </section>
+        <section>
+          <h3>
+            "What is SuperCollider?"
+          </h3>
+          <hr>
+          <div class="fragment">
+            <p>
+              In this workshop, we will <b>not</b> go into the <b>encoding of OSC</b>
+              and all the nitty gritty details of it.
+            </p>
+            <hr>
+          </div>
+          <p class="fragment">
+            We will use a program called <b>SuperCollier</b> to use and interact directly with OSC and
+            create an application using it.
+          </p>
+        </section>
+      </section>
 
-            <section id="step-1">
-                <h2> Step 1: Get SuperCollider </h2>
-                <hr>
-                <p>
-                    Download SuperCollider (Windows, Linux, MacOS):
-                    <a href="https://supercollider.github.io/downloads.html" target="_blank">
-                        https://supercollider.github.io/downloads.html
-                    </a>
-                </p>
-                <div class="fragment">
-                    <hr>
-                    <p>
-                        For the <i>command-line enthusiasts</i>
-                    </p>
-                    <pre><code data-noescape data-trim>
+      <section id="step-1">
+        <h2> Step 1: Get SuperCollider </h2>
+        <hr>
+        <p>
+          Download SuperCollider (Windows, Linux, MacOS):
+          <a href="https://supercollider.github.io/downloads.html" target="_blank">
+            https://supercollider.github.io/downloads.html
+          </a>
+        </p>
+        <div class="fragment">
+          <hr>
+          <p>
+            For the <i>command-line enthusiasts</i>
+          </p>
+          <pre><code data-noescape data-trim>
     choco install supercollider             # Windows
     apt install supercollider               # Debian-based
     pacman -S supercollider                 # Arch-based
     brew install --cask supercollider       # MacOS
                     </code></pre>
-                </div>
-            </section>
+        </div>
+      </section>
 
-            <section id="step-2">
-                <section data-markdown>
-                    <textarea data-template>
+      <section id="step-2">
+        <section data-markdown>
+          <textarea data-template>
                         ## Step 2
                         <hr>
 
                         **Getting started with the SuperCollider IDE**
                     </textarea>
-                </section>
-                <section>
-                    <p>Let's make a <code>Hello World</code> program.</p>
-                    <pre>
+        </section>
+        <section>
+          <p>Let's make a <code>Hello World</code> program.</p>
+          <pre>
                         <code>
         "Hello World!".postln;
                         </code>
                     </pre>
-                    <div class="fragment">
-                        <hr>
-                        <p>
-                            Press <code>Ctrl Enter</code> or <code>Cmd Enter</code>
-                        </p>
-                    </div>
-                    <div class="fragment">
-                        <hr>
-                        You should get this on the post window.
-                        <br>
-                        <img src="/media/HelloWorldPost.png" alt="Hello World on post">
-                    </div>
-                </section>
-                <section>
-                    <h2>Documentation</h2>
-                    <hr>
-                    <p>
-                        SuperCollider has a very extensive documentation.
-                        <br>
-                        You can access it by pressing <code>Ctrl Shift D</code> or <code>Cmd Shift D</code>
-                    </p>
-                    <img src="/media/DocumentationPopup.png" alt="Documentation Pop-up">
-                </section>
-                <section>
-                    <h2>Documentation</h2>
-                    <hr>
-                    <p>
-                        You can also access the documentation of a function by
-                        <code>Ctrl D</code> or <code>Cmd D</code> with the cursor on the code.
-                    </p>
-                </section>
-                <section>
-                    <h2>Documentation</h2>
-                    <hr>
-                    <p>
-                        You can play with the example codes on the documentation with <code>Ctrl Enter</code> or
-                        <code>Cmd Enter</code>
-                    </p>
-                    <img src="/media/SinOscExampleDoc.png" alt="Examples of SinOsc on the documentation">
-                </section>
-            </section>
+          <div class="fragment">
+            <hr>
+            <p>
+              Press <code>Ctrl Enter</code> or <code>Cmd Enter</code>
+            </p>
+          </div>
+          <div class="fragment">
+            <hr>
+            You should get this on the post window.
+            <br>
+            <img src="/media/HelloWorldPost.png" alt="Hello World on post">
+          </div>
+        </section>
+        <section>
+          <h2>Documentation</h2>
+          <hr>
+          <p>
+            SuperCollider has a very extensive documentation.
+            <br>
+            You can access it by pressing <code>Ctrl Shift D</code> or <code>Cmd Shift D</code>
+          </p>
+          <img src="/media/DocumentationPopup.png" alt="Documentation Pop-up">
+        </section>
+        <section>
+          <h2>Documentation</h2>
+          <hr>
+          <p>
+            You can also access the documentation of a function by
+            <code>Ctrl D</code> or <code>Cmd D</code> with the cursor on the code.
+          </p>
+        </section>
+        <section>
+          <h2>Documentation</h2>
+          <hr>
+          <p>
+            You can play with the example codes on the documentation with <code>Ctrl Enter</code> or
+            <code>Cmd Enter</code>
+          </p>
+          <img src="/media/SinOscExampleDoc.png" alt="Examples of SinOsc on the documentation">
+        </section>
+      </section>
 
-            <section id="step-3">
-                <section>
-                    <h2> Step 3: SC Basics </h2>
-                    <hr>
-                    <p> Let's start with making a sinusoid wave! </p>
-                </section>
+      <section id="step-3">
+        <section>
+          <h2> Step 3: SC Basics </h2>
+          <hr>
+          <p> Let's start with making a sinusoid wave! </p>
+        </section>
 
-                <section>
-                    <p> 3.1. Create a <code>SinOsc</code> object with the params: </p>
-                    <code>
-                        SinOsc.ar(440);
-                    </code>
-                    <p>
-                        You can always check the documentation:
-                    </p>
-                    <img src="/media/SinOsc.png" alt="SinOsc methods">
-                </section>
-                <section>
-                    <p> 3.1. Create a <code>SinOsc</code> object with the params: </p>
-                    <code>
-                        SinOsc.ar(440);
-                    </code>
-                    <p class="r-fit-text">
-                        <i>
-                            Note: Unspecified parameter(s) will use the default value(s)!!
-                        </i>
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        3.2. Wrap the oscillator with curly brackets. <br>
-                        You now have a <code>Function</code>
-                    </p>
-                    <code>
-                        { SinOsc.ar(440) };
-                    </code>
-                </section>
-                <section>
-                    <p>
-                        3.3. You can add <code>.play</code> to play the <code>Function</code> to make it play the sound!
-                    </p>
-                    <code>
-                        { SinOsc.ar(440) }.play;
-                    </code>
-                </section>
+        <section>
+          <p> 3.1. Create a <code>SinOsc</code> object with the params: </p>
+          <code>SinOsc.ar(440);</code>
+          <p>
+            You can always check the documentation:
+          </p>
+          <img src="/media/SinOsc.png" alt="SinOsc methods">
+        </section>
+        <section>
+          <p> 3.1. Create a <code>SinOsc</code> object with the params: </p>
+          <code>SinOsc.ar(440);</code>
+          <p class="r-fit-text">
+            <i>
+              Note: Unspecified parameter(s) will use the default value(s)!!
+            </i>
+          </p>
+        </section>
+        <section>
+          <p>
+            3.2. Wrap the oscillator with curly brackets. <br>
+            You now have a <code>Function</code>
+          </p>
+          <code>{ SinOsc.ar(440) };</code>
+        </section>
+        <section>
+          <p>
+            3.3. You can add <code>.play</code> to play the <code>Function</code> to make it play the sound!
+          </p>
+          <code>{ SinOsc.ar(440) }.play;</code>
+        </section>
 
-                <section>
-                    <p>
-                        3.4. Press <code>Ctrl Enter</code> or <code>Cmd Enter</code>
-                        with the cursor on the line to play the sine wave
-                    </p>
-                    <code>
-                        { SinOsc.ar(440) }.play;
-                    </code>
-                    <p> It's a pure A4 signal! </p>
+        <section>
+          <p>
+            3.4. Press <code>Ctrl Enter</code> or <code>Cmd Enter</code>
+            with the cursor on the line to play the sine wave
+          </p>
+          <code>{ SinOsc.ar(440) }.play;</code>
+          <p> It's a pure A4 signal! </p>
 
-                    <div class="fragment">
-                        <hr>
-                        <p>
-                            <i class="r-fit-text">
-                                Oh and, <code>Ctrl B</code> / <code> Cmd B</code> to
-                                start the <code>scsynth</code> local server!
-                            </i>
-                        </p>
-                    </div>
-                </section>
-                <section>
-                    <p>
-                        3.5. Press <code>Ctrl .</code> or <code>Cmd .</code>
-                        to stop the audio playing
-                    </p>
-                    <code>
-                        { SinOsc.ar(440) }.play;
-                    </code>
-                </section>
-                <section>
-                    <h4>
-                        3.6. Variables
-                    </h4>
-                    <div class="fragment">
-                        <p>
-                            <b>Single character</b> : <code> a = {...} </code>
-                            <br>
-                        <p>
-                            not recommended because there are reserved/default
-                            variable (<code>s</code> for server)
-                        </p>
-                        </p>
-                        <hr>
-                    </div>
-                    <div class="fragment">
-                        <p>
-                            <b>Long word</b><br>
-                        <pre>
-                                <code>~myThing = ...</code>
-                                <i>or</i> <br>
-                                <code>var myThingy2 = ...</code>
-                            </pre>
-                        can follow any naming convention, very flexible
-                        </p>
-                    </div>
+          <div class="fragment">
+            <hr>
+            <p>
+              <i class="r-fit-text">
+                Oh and, <code>Ctrl B</code> / <code> Cmd B</code> to
+                start the <code>scsynth</code> local server!
+              </i>
+            </p>
+          </div>
+        </section>
+        <section>
+          <p>
+            3.5. Press <code>Ctrl .</code> or <code>Cmd .</code>
+            to stop the audio playing
+          </p>
+          <code>{ SinOsc.ar(440) }.play;</code>
+        </section>
+        <section>
+          <h4>
+            3.6. Variables
+          </h4>
+          <div class="fragment">
+            <p>
+              <b>Single character</b> : <code> a = {...} </code>
+              <br>
+            <p>
+              not recommended because there are reserved/default
+              variable (<code>s</code> for server)
+            </p>
+            </p>
+            <hr>
+          </div>
+          <div class="fragment">
+            <p>
+              <b>Long word</b><br>
+            <pre>
+<code>~myThing = ...</code>
+<i>or</i> <br>
+<code>var myThingy2 = ...</code>
+            </pre>
+            can follow any naming convention, very flexible
+            </p>
+          </div>
 
-                </section>
-            </section>
+        </section>
+      </section>
 
-            <section id="step-4">
-                <section>
-                    <h2> Step 4
-                        <hr> <code>Synth</code> & <code>SynthDef</code>
-                    </h2>
-                    <blockquote> Remember OOP? </blockquote>
-                </section>
-                <section>
-                    <h2><b>SynthDef</b></h2>
-                    <hr>
-                    <div class="fragment fade-in">
-                        <pre>
+      <section id="step-4">
+        <section>
+          <h2> Step 4
+            <hr> <code>Synth</code> & <code>SynthDef</code>
+          </h2>
+          <blockquote> Remember OOP? </blockquote>
+        </section>
+        <section>
+          <h2><b>SynthDef</b></h2>
+          <hr>
+          <div class="fragment fade-in">
+            <pre>
 <code data-line-numbers="2|5">    // Create a new Synth Definition
     SynthDef.new(\name, {Function});
 
     // Add (Sending) the SynthDef to the server
     SynthDef.new(\name, {Function}).add;</code>
                         </pre>
-                    </div>
-                </section>
-                <section>
-                    <h2><b>SynthDef - Example</b></h2>
-                    <hr>
-                    <div class="fragment fade-in">
-                        <pre>
+          </div>
+        </section>
+        <section>
+          <h2><b>SynthDef - Example</b></h2>
+          <hr>
+          <div class="fragment fade-in">
+            <pre>
 <code data-line-numbers="2|3|4|5|6" data-noescape>    // Create a new Synth Definition
     SynthDef.new(\Sinusoid, {
         var freq = 440; // A4
@@ -397,16 +381,16 @@
     }).add;
 </code>
                         </pre>
-                    </div>
-                    <p class="fragment"> We will learn about <code>Out</code> function soon!</p>
-                </section>
-                <section>
-                    <h2><b>SynthDef - Example</b></h2>
-                    <hr>
-                    To run a large section of code, you can add parenthesis at the beginning and the end of the block to
-                    run it!
-                    <div class="fragment fade-in">
-                        <pre>
+          </div>
+          <p class="fragment"> We will learn about <code>Out</code> function soon!</p>
+        </section>
+        <section>
+          <h2><b>SynthDef - Example</b></h2>
+          <hr>
+          To run a large section of code, you can add parenthesis at the beginning and the end of the block to
+          run it!
+          <div class="fragment fade-in">
+            <pre>
 <code data-line-numbers="1,8|1-8" data-noescape>(
     // Create a new Synth Definition
     SynthDef.new(\Sinusoid, {
@@ -417,36 +401,36 @@
 )
 </code>
                         </pre>
-                    </div>
-                </section>
-                <section>
-                    <h2><b>Synth - Example</b></h2>
-                    <hr>
-                    <div class="fragment fade-in">
-                        <pre>
+          </div>
+        </section>
+        <section>
+          <h2><b>Synth - Example</b></h2>
+          <hr>
+          <div class="fragment fade-in">
+            <pre>
     <code data-line-numbers="1|3,4">x = Synth(\Sinusoid);
 
 // free the UGen when you're done
 x.free; // or `Ctrl .` / `Cmd .` 
     </code>
                         </pre>
-                    </div>
-                    <div class="fragment">
-                        <blockquote>
-                            Notice the status bar!
-                        </blockquote>
-                    </div>
-                </section>
+          </div>
+          <div class="fragment">
+            <blockquote>
+              Notice the status bar!
+            </blockquote>
+          </div>
+        </section>
 
-                <section>
-                    <h2><b>SynthDef - Arguments</b></h2>
-                    <hr>
-                    To add argument(s) to your SynthDef, there are two ways to do it.
-                    <div class="fragment fade-in">
-                        <p>
-                            #1: Use <code>arg</code> for variable(s)
-                        </p>
-                        <pre>
+        <section>
+          <h2><b>SynthDef - Arguments</b></h2>
+          <hr>
+          To add argument(s) to your SynthDef, there are two ways to do it.
+          <div class="fragment fade-in">
+            <p>
+              #1: Use <code>arg</code> for variable(s)
+            </p>
+            <pre>
 <code data-line-numbers="4" data-noescape>(
     // Create a new Synth Definition
     SynthDef.new(\Sinusoid, {
@@ -457,17 +441,17 @@ x.free; // or `Ctrl .` / `Cmd .`
 )
 </code>
                         </pre>
-                    </div>
-                </section>
-                <section>
-                    <h2><b>SynthDef - Arguments</b></h2>
-                    <hr>
-                    To add argument(s) to your SynthDef, there are two ways to do it.
-                    <div>
-                        <p>
-                            #2: Use the pipe symbol <code>| variable |</code>
-                        </p>
-                        <pre>
+          </div>
+        </section>
+        <section>
+          <h2><b>SynthDef - Arguments</b></h2>
+          <hr>
+          To add argument(s) to your SynthDef, there are two ways to do it.
+          <div>
+            <p>
+              #2: Use the pipe symbol <code>| variable |</code>
+            </p>
+            <pre>
 <code data-line-numbers="4" data-noescape>(
     // Create a new Synth Definition
     SynthDef.new(\Sinusoid, {
@@ -478,79 +462,79 @@ x.free; // or `Ctrl .` / `Cmd .`
 )
 </code>
                         </pre>
-                    </div>
-                </section>
-                <section>
-                    <h2><b>Synth - with Arguments</b></h2>
-                    <hr>
-                    <div class="fragment fade-in">
-                        <pre>
+          </div>
+        </section>
+        <section>
+          <h2><b>Synth - with Arguments</b></h2>
+          <hr>
+          <div class="fragment fade-in">
+            <pre>
     <code data-line-numbers="1,2|4,5">x = Synth(\Sinusoid, [\freq, 400]);
 x.set(\freq, 600);
 
 // Having multiple arguments?
 x = Synth(\OtherSinusoid, [\freq, 400, \amp, 0.4]);</code>
                         </pre>
-                    </div>
-                    <div class="fragment">
-                        <blockquote>
-                            🎉 Congrats! You've mastered the basics of SuperCollider IDE!
-                        </blockquote>
-                    </div>
-                </section>
-            </section>
+          </div>
+          <div class="fragment">
+            <blockquote>
+              🎉 Congrats! You've mastered the basics of SuperCollider IDE!
+            </blockquote>
+          </div>
+        </section>
+      </section>
 
-            <section id="step-5">
-                <section>
-                    <h2> Step 5
-                        <hr> <i>Signal Processing Basics</i>
-                    </h2>
-                </section>
-                <section>
-                    <h2> 5.1. Basic functions </h2>
-                    <hr>
-                    <p>
-                        \[\begin{aligned}
-                        &amp; \text{Sine Wave: }
-                        x(t) = A\sin(2\pi ft + \phi) \\
-                        &amp; \text{Pulse Train: }
-                        x(t) = \sum_{n=-\infty}^{\infty} A\cdot \text{rect}\left(\frac{t-nT}{T_p}\right) \\
-                        &amp; \text{Saw Tooth: }
-                        x(t) = \frac{A}{T}t - \left\lfloor \frac{A}{T}t \right\rfloor \\
-                        \end{aligned} \]
-                    </p>
-                    <blockquote class="fragment fade-in">
-                        How can you implement those in SuperCollider??
-                    </blockquote>
-                </section>
-                <section>
-                    <h2>
-                        5.1. Basic functions
-                    </h2>
-                    <blockquote>
-                        in SuperCollider
-                    </blockquote>
-                    <hr>
-                    <p>
-                        \[\begin{aligned}
-                        &amp; \text{Sine Wave: }
-                        x = SinOsc.ar(f,\phi,Amp) \\
-                        &amp; \text{Pulse Train: }
-                        x = Pulse.ar(f, width, Amp) \\
-                        &amp; \text{Saw Tooth: }
-                        x = Saw.ar(f,Amp) \\
-                        \end{aligned} \]
-                    </p>
-                </section>
-                <section>
-                    <i>
-                        Noises in SuperCollider
-                    </i>
-                    <hr>
-                    <div class="r-stack r-stretch">
-                        <img class="fragment fade-out" src="/media/Noises.png" alt="SuperCollider Noises">
-                        <div class="fragment">
-                            <pre>
+      <section id="step-5">
+        <section>
+          <h2> Step 5
+            <hr> <i>Signal Processing Basics</i>
+          </h2>
+        </section>
+        <section>
+          <h2> 5.1. Basic functions </h2>
+          <hr>
+          <p>
+            \[\begin{aligned}
+            &amp; \text{Sine Wave: }
+            x(t) = A\sin(2\pi ft + \phi) \\
+            &amp; \text{Pulse Train: }
+            x(t) = \sum_{n=-\infty}^{\infty} A\cdot \text{rect}\left(\frac{t-nT}{T_p}\right) \\
+            &amp; \text{Saw Tooth: }
+            x(t) = \frac{A}{T}t - \left\lfloor \frac{A}{T}t \right\rfloor \\
+            \end{aligned} \]
+          </p>
+          <blockquote class="fragment fade-in">
+            How can you implement those in SuperCollider??
+          </blockquote>
+        </section>
+        <section>
+          <h2>
+            5.1. Basic functions
+          </h2>
+          <blockquote>
+            in SuperCollider
+          </blockquote>
+          <hr>
+          <p>
+            \[\begin{aligned}
+            &amp; \text{Sine Wave: }
+            x = SinOsc.ar(f,\phi,Amp) \\
+            &amp; \text{Pulse Train: }
+            x = Pulse.ar(f, width, Amp) \\
+            &amp; \text{Saw Tooth: }
+            x = Saw.ar(f,Amp) \\
+            \end{aligned} \]
+          </p>
+        </section>
+        <section>
+          <i>
+            Noises in SuperCollider
+          </i>
+          <hr>
+          <div class="r-stack r-stretch">
+            <img class="fragment fade-out" src="/media/Noises.png" alt="SuperCollider Noises">
+            <div class="fragment">
+              <pre>
 <code data-line-numbers="2,5,8,11">// Brown Noise
 BrownNoise.ar(mul: 1.0, add: 0.0);
 
@@ -564,35 +548,35 @@ LFDNoise0.ar(freq: 500.0, mul: 1.0, add: 0.0)
 Pink.ar(mul: 1.0, add: 0.0);
 </code>
                             </pre>
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <h2> 5.2. Signal Manipulation </h2>
-                    <hr>
-                    <p> Amplitude Modulation (AM) </p>
-                    \[\begin{aligned}
-                    &amp; X_{carrier} = M\sin{2\pi f_{carrier}t} \\
-                    &amp; x(t) = A \cdot X_{carrier} \sin{(2\pi ft+\theta)} \\
-                    \end{aligned} \]
-                    <p> Frequency Modulation (FM) </p>
-                    \[\begin{aligned}
-                    &amp; X_{carrier} = M\sin{2\pi f_{carrier}t} \\
-                    &amp; x(t) = A \sin{(2\pi f\cdot X_{carrier}t+\theta)} \\
-                    \end{aligned} \]
-                </section>
-                <section>
-                    <h2> 5.2. Signal Manipulation </h2>
-                    <hr>
-                    <p> Additive & Subtractive Synthesis </p>
-                    \[\begin{aligned}
-                    &amp; x_1(t) = A_1 \sin{(2\pi f_1t+\theta_1)} \\
-                    &amp; x_2(t) = A_2 \sin{(2\pi f_2t+\theta_2)} \\
-                    &amp; x_{out}(t) = x_1(t) \pm x_2(t) \\
-                    \end{aligned} \]
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2> 5.2. Signal Manipulation </h2>
+          <hr>
+          <p> Amplitude Modulation (AM) </p>
+          \[\begin{aligned}
+          &amp; X_{carrier} = M\sin{2\pi f_{carrier}t} \\
+          &amp; x(t) = A \cdot X_{carrier} \sin{(2\pi ft+\theta)} \\
+          \end{aligned} \]
+          <p> Frequency Modulation (FM) </p>
+          \[\begin{aligned}
+          &amp; X_{carrier} = M\sin{2\pi f_{carrier}t} \\
+          &amp; x(t) = A \sin{(2\pi f\cdot X_{carrier}t+\theta)} \\
+          \end{aligned} \]
+        </section>
+        <section>
+          <h2> 5.2. Signal Manipulation </h2>
+          <hr>
+          <p> Additive & Subtractive Synthesis </p>
+          \[\begin{aligned}
+          &amp; x_1(t) = A_1 \sin{(2\pi f_1t+\theta_1)} \\
+          &amp; x_2(t) = A_2 \sin{(2\pi f_2t+\theta_2)} \\
+          &amp; x_{out}(t) = x_1(t) \pm x_2(t) \\
+          \end{aligned} \]
 
-                    <div class="fragment">
-                        <pre>
+          <div class="fragment">
+            <pre>
 <code>{
     var freq = 400, amp = 1;
     SinOsc.ar(freq, 0, amp)
@@ -601,13 +585,13 @@ Pink.ar(mul: 1.0, add: 0.0);
 }.play;
 </code>
                         </pre>
-                    </div>
-                </section>
-                <section>
-                    <h2> 5.3. Scopes </h2>
-                    <hr>
-                    <p>SuperCollider has built-in scopes to help us visualize our signals</p>
-                    <pre>
+          </div>
+        </section>
+        <section>
+          <h2> 5.3. Scopes </h2>
+          <hr>
+          <p>SuperCollider has built-in scopes to help us visualize our signals</p>
+          <pre>
 <code data-line-numbers="3,6-7,10|1-10">// s is the server variable.
 // Here we want to use the time scope
 s.scope;
@@ -620,35 +604,35 @@ FreqScope.new(width: 522, height: 300, busNum: 0,
 FreqScope(500, 400, 0, s);
 </code>
                     </pre>
-                </section>
-            </section>
+        </section>
+      </section>
 
-            <section id="step-6">
-                <section>
-                    <h2> Step 6
-                        <hr> <i>Let's make a note!</i>
-                    </h2>
-                    <blockquote> with Envelope 💌 </blockquote>
-                </section>
-                <section>
-                    <h3>
-                        Envelope function: <code>Env</code>
-                    </h3>
-                    <hr>
-                    <p>
-                        In essence, an envelope is a function that changes the amplitude of a sound over time.
-                        It puts the sound in an "envelope" of sorts, hence the name.
-                    </p>
-                    <p class="fragment">
-                        There are many ways to create an envelope in SuperCollider.
-                    </p>
-                </section>
-                <section>
-                    <h3>
-                        Envelope function: <code>Env</code>
-                    </h3>
-                    <hr>
-                    <pre>
+      <section id="step-6">
+        <section>
+          <h2> Step 6
+            <hr> <i>Let's make a note!</i>
+          </h2>
+          <blockquote> with Envelope 💌 </blockquote>
+        </section>
+        <section>
+          <h3>
+            Envelope function: <code>Env</code>
+          </h3>
+          <hr>
+          <p>
+            In essence, an envelope is a function that changes the amplitude of a sound over time.
+            It puts the sound in an "envelope" of sorts, hence the name.
+          </p>
+          <p class="fragment">
+            There are many ways to create an envelope in SuperCollider.
+          </p>
+        </section>
+        <section>
+          <h3>
+            Envelope function: <code>Env</code>
+          </h3>
+          <hr>
+          <pre>
 <code data-line-numbers="2,3|*">Env.new(
     levels: [0, 1, 0.9, 0],
     times: [0.1, 0.5, 1],
@@ -656,70 +640,70 @@ FreqScope(500, 400, 0, s);
 ).plot;
 </code>
 </pre>
-                    <img src="/media/EnvExample.png" alt="Example of an envelope function" class="r-stretch">
-                </section>
-                <section>
-                    <h3>
-                        Using Envelope function: <code>EnvGen</code>
-                    </h3>
-                    <hr>
-                    <p>
-                        The <code>EnvGen</code> function is used to generate an envelope.
-                    </p>
-                    <hr>
-                    <p>
-                        You can think <code>Env</code> is the <i>blueprint</i> or <i>specifications</i> of the envelope,
-                        while <code>EnvGen</code> is the <i>instance</i> that you can use.
-                    </p>
-                </section>
-                <section>
-                    <h3>
-                        <code>Env</code> example
-                    </h3>
-                    <hr>
-                    <pre><code>~envFunc = Env.perc(0.1, 0.7);</code></pre>
-                    <img src="/media/EnvPerc.png" alt="Percussive Envelope" class="r-stretch">
-                    <p class="r-fit-text">This is also called an <b>Attack-Release</b> envelope</p>
-                </section>
-                <section>
-                    <h3>Types of envelope</h3>
-                    <hr>
-                    <p>
-                        For more types of envelope, you can check the <br>
-                        <b>SuperCollider documentation</b>.
-                    </p>
-                    <p>
-                        Additionally, you can checkout the basics and types of envelope at
-                        <a href="https://thewolfsound.com/envelopes/">
-                            https://thewolfsound.com/envelopes/
-                        </a>
-                    </p>
-                </section>
-                <section>
-                    <h3>
-                        <h3>Types of envelope: ADSR</h3>
-                    </h3>
-                    <hr>
-                    <p>ADSR is the most common type of envelope,<br>
-                        <span class="r-fit-text">
-                            commonly seen in a lot of <i>digital audio workstation (DAW)</i>
-                        </span>
-                    </p>
-                    <code
-                        class="r-fit-text">Env.adsr(attackTime: 0.01, decayTime: 0.3, sustainLevel: 0.5, releaseTime: 1.0, peakLevel: 1.0, curve: -4.0, bias: 0.0)</code>
-                </section>
-                <section>
-                    <img src="/media/ADSREnv.png" alt="ADSR Envelope, from Native Instrument" class="r-stretch">
-                    <a href="https://blog.native-instruments.com/adsr-explained/" target="_blank" class="r-fit-text">
-                        https://blog.native-instruments.com/adsr-explained/
-                    </a>
-                </section>
-                <section>
-                    <h3>
-                        Using Envelope function: <code>EnvGen</code>
-                    </h3>
-                    <hr>
-                    <pre>
+          <img src="/media/EnvExample.png" alt="Example of an envelope function" class="r-stretch">
+        </section>
+        <section>
+          <h3>
+            Using Envelope function: <code>EnvGen</code>
+          </h3>
+          <hr>
+          <p>
+            The <code>EnvGen</code> function is used to generate an envelope.
+          </p>
+          <hr>
+          <p>
+            You can think <code>Env</code> is the <i>blueprint</i> or <i>specifications</i> of the envelope,
+            while <code>EnvGen</code> is the <i>instance</i> that you can use.
+          </p>
+        </section>
+        <section>
+          <h3>
+            <code>Env</code> example
+          </h3>
+          <hr>
+          <pre><code>~envFunc = Env.perc(0.1, 0.7);</code></pre>
+          <img src="/media/EnvPerc.png" alt="Percussive Envelope" class="r-stretch">
+          <p class="r-fit-text">This is also called an <b>Attack-Release</b> envelope</p>
+        </section>
+        <section>
+          <h3>Types of envelope</h3>
+          <hr>
+          <p>
+            For more types of envelope, you can check the <br>
+            <b>SuperCollider documentation</b>.
+          </p>
+          <p>
+            Additionally, you can checkout the basics and types of envelope at
+            <a href="https://thewolfsound.com/envelopes/">
+              https://thewolfsound.com/envelopes/
+            </a>
+          </p>
+        </section>
+        <section>
+          <h3>
+            <h3>Types of envelope: ADSR</h3>
+          </h3>
+          <hr>
+          <p>ADSR is the most common type of envelope,<br>
+            <span class="r-fit-text">
+              commonly seen in a lot of <i>digital audio workstation (DAW)</i>
+            </span>
+          </p>
+          <code
+            class="r-fit-text">Env.adsr(attackTime: 0.01, decayTime: 0.3, sustainLevel: 0.5, releaseTime: 1.0, peakLevel: 1.0, curve: -4.0, bias: 0.0)</code>
+        </section>
+        <section>
+          <img src="/media/ADSREnv.png" alt="ADSR Envelope, from Native Instrument" class="r-stretch">
+          <a href="https://blog.native-instruments.com/adsr-explained/" target="_blank" class="r-fit-text">
+            https://blog.native-instruments.com/adsr-explained/
+          </a>
+        </section>
+        <section>
+          <h3>
+            Using Envelope function: <code>EnvGen</code>
+          </h3>
+          <hr>
+          <pre>
 <code data-line-numbers="1,2,7">EnvGen.ar(
     envelope,
     gate: 1.0,
@@ -729,47 +713,47 @@ FreqScope(500, 400, 0, s);
     doneAction: 0
 );</code>
                     </pre>
-                    <p>
-                        For the scope of this workshop, we will only look into the envelope function and the
-                        <code>doneAction</code> parameter.
-                    </p>
-                </section>
-                <section>
-                    <h3>
-                        <code>doneAction</code> parameter
-                    </h3>
-                    <hr>
-                    <code>doneAction: Done.freeSelf;</code><br>
-                    <p class="r-fit-text">
-                        This parameter tells the server what to do when the envelope is done.
-                    </p>
-                    <div class="fragment">
-                        <hr>
-                        <p>
-                            <code>Done.freeSelf</code> means that the "note" will be freed when the envelope is done.
-                        </p>
-                    </div>
-                    <div class="fragment">
-                        <br>
-                        <p class="r-fit-text">
-                            This concept in SuperCollider is called <b>nodes (node objects)</b> on the server.
-                        </p>
-                    </div>
-                </section>
-                <section>
-                    <h3>
-                        <code>EnvGen</code> example
-                    </h3>
-                    <hr>
-                    <pre>
+          <p>
+            For the scope of this workshop, we will only look into the envelope function and the
+            <code>doneAction</code> parameter.
+          </p>
+        </section>
+        <section>
+          <h3>
+            <code>doneAction</code> parameter
+          </h3>
+          <hr>
+          <code>doneAction: Done.freeSelf;</code><br>
+          <p class="r-fit-text">
+            This parameter tells the server what to do when the envelope is done.
+          </p>
+          <div class="fragment">
+            <hr>
+            <p>
+              <code>Done.freeSelf</code> means that the "note" will be freed when the envelope is done.
+            </p>
+          </div>
+          <div class="fragment">
+            <br>
+            <p class="r-fit-text">
+              This concept in SuperCollider is called <b>nodes (node objects)</b> on the server.
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>
+            <code>EnvGen</code> example
+          </h3>
+          <hr>
+          <pre>
 <code data-line-numbers="2|*">~envFunc = Env.perc(0.1, 0.7);
 EnvGen.kr(~envFunc, doneAction: Done.freeSelf);</code>
                     </pre>
-                </section>
-                <section>
-                    <h3>Making a note</h3>
-                    <hr>
-                    <pre>
+        </section>
+        <section>
+          <h3>Making a note</h3>
+          <hr>
+          <pre>
 <code>(
 {
     ~envFunc = Env.perc(0.1, 0.7);
@@ -779,33 +763,33 @@ EnvGen.kr(~envFunc, doneAction: Done.freeSelf);</code>
 )
 </code>
 </pre>
-                </section>
-            </section>
+        </section>
+      </section>
 
-            <section id="step-7">
-                <section>
-                    <h2> Step 7
-                    </h2>
-                    <hr>
-                    <h3><b> Output channels & Panning </b></h3>
-                    <blockquote>
-                        Spatialized Audio!? 🎧
-                    </blockquote>
-                </section>
-                <section>
-                    <h3>
-                        Channel / Bus
-                    </h3>
-                    <hr>
-                    <p>
-                        <span class="r-fit-text">
-                            Generally, most generic computers has two output channels:
-                        </span>
-                        <br>
-                        the <b>left channel (Bus 0)</b> & <br>
-                        the <b>right channel (Bus 1)</b>.
-                    </p>
-                    <pre>
+      <section id="step-7">
+        <section>
+          <h2> Step 7
+          </h2>
+          <hr>
+          <h3><b> Output channels & Panning </b></h3>
+          <blockquote>
+            Spatialized Audio!? 🎧
+          </blockquote>
+        </section>
+        <section>
+          <h3>
+            Channel / Bus
+          </h3>
+          <hr>
+          <p>
+            <span class="r-fit-text">
+              Generally, most generic computers has two output channels:
+            </span>
+            <br>
+            the <b>left channel (Bus 0)</b> & <br>
+            the <b>right channel (Bus 1)</b>.
+          </p>
+          <pre>
 <code> // to see the channels
 s.meter
 
@@ -813,39 +797,39 @@ s.meter
 Out.ar(bus:0, mySynth);
 Out.ar(bus:1, mySynth);</code>
                     </pre>
-                    <blockquote class="fragment">
-                        Why do we need the <code>Out</code> function?
-                    </blockquote>
-                </section>
-                <section>
-                    <h3>
-                        <code>Out</code> function
-                    </h3>
-                    <hr>
-                    <p>
-                        <span class="r-fit-text">
-                            The <code>Out</code> function is used to output the sound to a specific channel.
-                        </span>
-                        <br>
-                    <pre><code>Out.ar(bus:0, mySynth);</code></pre>
-                    <span class="r-fit-text">
-                        outputs the synth <code>mySynth</code> to the left channel.
-                    </span>
-                    </p>
-                    <p class="fragment">
-                        <br>
-                        This is particularly useful for multi-speaker setup!
-                    </p>
-                </section>
-                <section>
-                    <h3>
-                        Multichannel Expansion
-                    </h3>
-                    <hr>
-                    <p>
-                        We can create a function with multiple audio channels by using the array syntax.
-                    </p>
-                    <pre>
+          <blockquote class="fragment">
+            Why do we need the <code>Out</code> function?
+          </blockquote>
+        </section>
+        <section>
+          <h3>
+            <code>Out</code> function
+          </h3>
+          <hr>
+          <p>
+            <span class="r-fit-text">
+              The <code>Out</code> function is used to output the sound to a specific channel.
+            </span>
+            <br>
+          <pre><code>Out.ar(bus:0, mySynth);</code></pre>
+          <span class="r-fit-text">
+            outputs the synth <code>mySynth</code> to the left channel.
+          </span>
+          </p>
+          <p class="fragment">
+            <br>
+            This is particularly useful for multi-speaker setup!
+          </p>
+        </section>
+        <section>
+          <h3>
+            Multichannel Expansion
+          </h3>
+          <hr>
+          <p>
+            We can create a function with multiple audio channels by using the array syntax.
+          </p>
+          <pre>
 <code data-line-numbers="2,5,8">// one channel
 { Blip.ar(800,4,0.1) }.play;
 
@@ -856,17 +840,17 @@ Out.ar(bus:1, mySynth);</code>
 { SinOsc.ar([440, 880], 0, 0.2) }.play;</code>
 </code>
                     </pre>
-                </section>
-                <section>
-                    <h3>
-                        Multichannel Expansion + <code>Out</code>
-                    </h3>
-                    <hr>
-                    <p>
-                        We can make the <code>Out</code> function output to multiple channels using <i>multichannel
-                            expansion</i>.
-                    </p>
-                    <pre>
+        </section>
+        <section>
+          <h3>
+            Multichannel Expansion + <code>Out</code>
+          </h3>
+          <hr>
+          <p>
+            We can make the <code>Out</code> function output to multiple channels using <i>multichannel
+              expansion</i>.
+          </p>
+          <pre>
 <code data-line-numbers="3,4,6,9|*">(
 {
     ~sound1 = Blip.ar(800,4,0.1);
@@ -879,44 +863,45 @@ Out.ar(bus:1, mySynth);</code>
 }.play;
 )</code>
                     </pre>
-                </section>
-                <section>
-                    <h3>
-                        Multichannel Expansion + <code>Out</code>
-                    </h3>
-                    <hr>
-                    <pre>
-                        <code>    // using multichannel expansion
-    Out.ar(0, [~sound1, ~sound2]);</code>
-                        </pre>
-                    <p class="r-fit-text">
-                        All sounds are expanded from channel 0 to the next channels.
-                    </p>
-                    <hr>
-                    <p class="fragment r-fit-text">
-                        <i>What if you have more sound functions than channels?</i>
-                    </p>
-                    <p class="fragment r-fit-text">
-                        <b>The sound(s) on unavailable channel(s) will not be played!</b>
-                    </p>
-                </section>
-                <section>
-                    <h3>
-                        The <code>Pan2</code> function
-                    </h3>
-                    <hr>
-                    <pre><code>Pan2.ar(in, pos: 0.0, level: 1.0)</code></pre>
-                    <p>
-                        where <code>in</code> is the output sound,<br>
-                        <code>pos</code> is the relative position to the center <br>
-                        <i>(-1 is left, +1 is right)</i>
-                    </p>
-                    </pre>
-                </section>
-                <section>
-                    <h2>A complete example</h2>
-                    <hr>
-                    <pre>
+        </section>
+        <section>
+          <h3>
+            Multichannel Expansion + <code>Out</code>
+          </h3>
+          <hr>
+          <pre>
+<code>// using multichannel expansion
+Out.ar(0, [~sound1, ~sound2]);
+</code>
+          </pre>
+          <p class="r-fit-text">
+            All sounds are expanded from channel 0 to the next channels.
+          </p>
+          <hr>
+          <p class="fragment r-fit-text">
+            <i>What if you have more sound functions than channels?</i>
+          </p>
+          <p class="fragment r-fit-text">
+            <b>The sound(s) on unavailable channel(s) will not be played!</b>
+          </p>
+        </section>
+        <section>
+          <h3>
+            The <code>Pan2</code> function
+          </h3>
+          <hr>
+          <pre><code>Pan2.ar(in, pos: 0.0, level: 1.0)</code></pre>
+          <p>
+            where <code>in</code> is the output sound,<br>
+            <code>pos</code> is the relative position to the center <br>
+            <i>(-1 is left, +1 is right)</i>
+          </p>
+          </pre>
+        </section>
+        <section>
+          <h2>A complete example</h2>
+          <hr>
+          <pre>
 <code data-line-numbers="3,4,5,8,9,11,12|*">// Making a note
 (
 SynthDef(\MyNote, { | freq = 440, amp = 0.5 |
@@ -935,111 +920,111 @@ SynthDef(\MyNote, { | freq = 440, amp = 0.5 |
 )
 
 Synth("MyNote")</code></pre>
-                </section>
-                <section>
-                    <h3>
-                        <i>[tangent]</i> <b> Spatialized Audio </b>
-                    </h3>
-                    <hr>
-                    <p class="r-fit-text">
-                        To achieve spatialized audio, we need more than just panning with <code>Pan2</code>.
-                    </p>
-                    <hr>
-                    <p class="fragment">
-                        <span class="r-fit-text">
-                            <b> Ambisonics </b> is a technique to achieve spatialized audio. <br>
-                        </span>
-                        <span class="r-fit-text">
-                            It uses concepts such as <i>W, X, Y, Z</i> to represent the sound in a 3D space.
-                        </span>
-                    </p>
+        </section>
+        <section>
+          <h3>
+            <i>[tangent]</i> <b> Spatialized Audio </b>
+          </h3>
+          <hr>
+          <p class="r-fit-text">
+            To achieve spatialized audio, we need more than just panning with <code>Pan2</code>.
+          </p>
+          <hr>
+          <p class="fragment">
+            <span class="r-fit-text">
+              <b> Ambisonics </b> is a technique to achieve spatialized audio. <br>
+            </span>
+            <span class="r-fit-text">
+              It uses concepts such as <i>W, X, Y, Z</i> to represent the sound in a 3D space.
+            </span>
+          </p>
 
-                    <div class="fragment">
-                        <hr>
-                        SuperCollider Ambisonic Toolkit:
-                        <a href="https://doc.sccode.org/Guides/Intro-to-the-ATK.html"
-                            class="r-fit-text">doc.sccode.org/Guides/Intro-to-the-ATK.html</a>
-                    </div>
-                    </pre>
-                </section>
-                <section>
-                    <h3>
-                        <i>[tangent]</i> <b> Spatialized Audio </b>
-                    </h3>
-                    <hr>
-                    <p class="fragment">
-                        <span>
-                            <b>Head-related transfer function</b> (HRTF) is another technique to achieve spatialized
-                            audio.
-                        </span>
-                    </p>
-                    <div class="fragment">
-                        <img src="/media/HRTF_mathworks.png" alt="HRTF" class="r-stretch">
-                    </div>
-                    </pre>
-                </section>
-            </section>
+          <div class="fragment">
+            <hr>
+            SuperCollider Ambisonic Toolkit:
+            <a href="https://doc.sccode.org/Guides/Intro-to-the-ATK.html"
+              class="r-fit-text">doc.sccode.org/Guides/Intro-to-the-ATK.html</a>
+          </div>
+          </pre>
+        </section>
+        <section>
+          <h3>
+            <i>[tangent]</i> <b> Spatialized Audio </b>
+          </h3>
+          <hr>
+          <p class="fragment">
+            <span>
+              <b>Head-related transfer function</b> (HRTF) is another technique to achieve spatialized
+              audio.
+            </span>
+          </p>
+          <div class="fragment">
+            <img src="/media/HRTF_mathworks.png" alt="HRTF" class="r-stretch">
+          </div>
+          </pre>
+        </section>
+      </section>
 
-            <section id="step-8">
-                <section>
-                    <h2> Step 8
-                    </h2>
-                    <hr>
-                    <p class="r-fit-text"><b> OSC message & <code>scsynth</code> Server </b></p>
-                    <blockquote>Brace yourself!</blockquote>
-                </section>
-                <section>
-                    <p><i>The client-server architecture</i></p>
-                    <hr>
-                    <div class="r-stack r-stretch">
-                        <img src="/media/Arch1.png" alt="Client only" class="fragment fade-in-and-out">
-                        <img src="/media/Arch2.png" alt="s.boot sent" class="fragment fade-in-and-out">
-                        <img src="/media/Arch3.png" alt="scsynth spawned" class="fragment fade-in-and-out">
-                        <img src="/media/Arch4.png" alt="Default port and host" class="fragment fade-in-and-out">
-                        <img src="/media/Arch5.png" alt="Create a SynthDef" class="fragment fade-in-and-out">
-                        <img src="/media/Arch6.png" alt="Send the SynthDef" class="fragment fade-in-and-out">
-                        <img src="/media/Arch7.png" alt="OSC message" class="fragment fade-in-and-out">
-                        <img src="/media/Arch8.png" alt="UDP Response" class="fragment fade-in-and-out">
-                        <img src="/media/Arch9.png" alt="Play the synth" class="fragment fade-in-and-out">
-                        <img src="/media/Arch10.png" alt="OSC message of play command" class="fragment fade-in-and-out">
-                        <img src="/media/Arch11.png" alt="Server plays the Synth" class="fragment fade-in-and-out">
-                        <img src="/media/Arch12.png" alt="Terminate command" class="fragment fade-in-and-out">
-                        <img src="/media/Arch13.png" alt="Server stops playing" class="fragment fade-in-and-out">
-                    </div>
-                    <div class="fragment">
-                        <i>Note: </i> the client is called <code>sclang</code>.
-                    </div>
-                </section>
-                <section>
-                    <p class="fragment r-fit-text">How can you interact with the server?</p>
-                    <p class="fragment r-fit-text">How can you encode an OSC message?</p>
-                    <p class="fragment r-fit-text">What can you do with all of these knowledge?</p>
-                </section>
-                <section>
-                    <h3>The <code>scsynth</code> server</h3>
-                    <hr>
-                    <p>
-                        The <code>scsynth</code> server is the server that runs the SuperCollider synthesis engine.
-                    </p>
-                    <div class="fragment">
-                        <hr>
-                        <p>
-                            By default, it runs on <code>localhost:57110</code>
-                        </p>
-                    </div>
-                    <div class="fragment">
-                        <hr>
-                        <p>
-                            SuperCollider IDE default server variable is <code>s</code>.
-                        </p>
-                        <blockquote><code>s.addr;</code> reveals the local address</blockquote>
-                    </div>
-                </section>
-                <section>
-                    <h3> Interact with the <code>scsynth</code> server</h3>
-                    <hr>
-                    <div class="fragment">
-                        <pre>
+      <section id="step-8">
+        <section>
+          <h2> Step 8
+          </h2>
+          <hr>
+          <p class="r-fit-text"><b> OSC message & <code>scsynth</code> Server </b></p>
+          <blockquote>Brace yourself!</blockquote>
+        </section>
+        <section>
+          <p><i>The client-server architecture</i></p>
+          <hr>
+          <div class="r-stack r-stretch">
+            <img src="/media/Arch1.png" alt="Client only" class="fragment fade-in-and-out">
+            <img src="/media/Arch2.png" alt="s.boot sent" class="fragment fade-in-and-out">
+            <img src="/media/Arch3.png" alt="scsynth spawned" class="fragment fade-in-and-out">
+            <img src="/media/Arch4.png" alt="Default port and host" class="fragment fade-in-and-out">
+            <img src="/media/Arch5.png" alt="Create a SynthDef" class="fragment fade-in-and-out">
+            <img src="/media/Arch6.png" alt="Send the SynthDef" class="fragment fade-in-and-out">
+            <img src="/media/Arch7.png" alt="OSC message" class="fragment fade-in-and-out">
+            <img src="/media/Arch8.png" alt="UDP Response" class="fragment fade-in-and-out">
+            <img src="/media/Arch9.png" alt="Play the synth" class="fragment fade-in-and-out">
+            <img src="/media/Arch10.png" alt="OSC message of play command" class="fragment fade-in-and-out">
+            <img src="/media/Arch11.png" alt="Server plays the Synth" class="fragment fade-in-and-out">
+            <img src="/media/Arch12.png" alt="Terminate command" class="fragment fade-in-and-out">
+            <img src="/media/Arch13.png" alt="Server stops playing" class="fragment fade-in-and-out">
+          </div>
+          <div class="fragment">
+            <i>Note: </i> the client is called <code>sclang</code>.
+          </div>
+        </section>
+        <section>
+          <p class="fragment r-fit-text">How can you interact with the server?</p>
+          <p class="fragment r-fit-text">How can you encode an OSC message?</p>
+          <p class="fragment r-fit-text">What can you do with all of these knowledge?</p>
+        </section>
+        <section>
+          <h3>The <code>scsynth</code> server</h3>
+          <hr>
+          <p>
+            The <code>scsynth</code> server is the server that runs the SuperCollider synthesis engine.
+          </p>
+          <div class="fragment">
+            <hr>
+            <p>
+              By default, it runs on <code>localhost:57110</code>
+            </p>
+          </div>
+          <div class="fragment">
+            <hr>
+            <p>
+              SuperCollider IDE default server variable is <code>s</code>.
+            </p>
+            <blockquote><code>s.addr;</code> reveals the local address</blockquote>
+          </div>
+        </section>
+        <section>
+          <h3> Interact with the <code>scsynth</code> server</h3>
+          <hr>
+          <div class="fragment">
+            <pre>
 <code>// Boot the server
 s.boot;
 
@@ -1055,38 +1040,38 @@ s.scope;
 // Show the server input & output meter
 s.meter;
 </code></pre>
-                    </div>
-                </section>
+          </div>
+        </section>
 
-                <section>
-                    <h2>OSC encoding schema</h2>
-                    <hr>
-                    <p>
-                        OSC follows a schema as follows:
-                    </p>
-                    <code> /address, [values] </code><br>
-                    <code> /address, [tags, arguments] </code>
-                    <div class="fragment">
-                        <p>
-                            Example: to create a new synth with the name "sine" <br>
-                        </p>
-                        <code> /s_new, ["sine"] </code>
-                    </div>
-                </section>
-                <section>
-                    <h3> On the SuperCollider IDE </h3>
-                    <hr>
-                    <p>The IDE provides client-side code that allows user to send OSC messages</p>
-                    <div class="fragment">
-                        <hr>
-                        <p>
-                            <span class="r-fit-text">
-                                By default, it uses the <code>s</code> server (<code>localhost:57110</code>)
-                            </span>
-                        </p>
-                    </div>
-                    <div class="fragment">
-                        <pre>
+        <section>
+          <h2>OSC encoding schema</h2>
+          <hr>
+          <p>
+            OSC follows a schema as follows:
+          </p>
+          <code> /address, [values] </code><br>
+          <code> /address, [tags, arguments] </code>
+          <div class="fragment">
+            <p>
+              Example: to create a new synth with the name "sine" <br>
+            </p>
+            <code> /s_new, ["sine"] </code>
+          </div>
+        </section>
+        <section>
+          <h3> On the SuperCollider IDE </h3>
+          <hr>
+          <p>The IDE provides client-side code that allows user to send OSC messages</p>
+          <div class="fragment">
+            <hr>
+            <p>
+              <span class="r-fit-text">
+                By default, it uses the <code>s</code> server (<code>localhost:57110</code>)
+              </span>
+            </p>
+          </div>
+          <div class="fragment">
+            <pre>
 <code data-line-numbers="1,4,5|7">~mySine = SynthDef("sine", {...}).add;
 
 // is equivalent to
@@ -1097,13 +1082,13 @@ s.meter;
 ~mySine = SynthDef("sine", {...}).load(s);
 </code>                            
                         </pre>
-                    </div>
-                </section>
-                <section>
-                    <h3> On the SuperCollider IDE </h3>
-                    <hr>
-                    <p> To play a Synth: </p>
-                    <pre>
+          </div>
+        </section>
+        <section>
+          <h3> On the SuperCollider IDE </h3>
+          <hr>
+          <p> To play a Synth: </p>
+          <pre>
 <code data-line-numbers="3,4,7,10">// play a Synth "\sine" with "freq" augument 900
 // x is used to keep track of the node number
 s.sendMsg("/s_new", "sine",
@@ -1115,87 +1100,87 @@ s.sendMsg("/n_set", x, "freq", 400);
 // to free the node
 s.sendMsg("/n_free", x);</code>
                     </pre>
-                </section>
-                <section>
-                    <h3 class="r-fit-text"> Usage of OSC outside of SuperCollider </h3>
-                    <hr>
-                    <p>
-                        OSC allows you to control the synthesizer server from a <b>different program</b>, or even a
-                        <b>different machine</b>!
-                    </p>
-                    <div class="fragment">
-                        <hr>
-                        <p>
-                            This includes but not limited to:
-                        <ul>
-                            <li>
-                                Python:
-                                <code><a href="https://python-osc.readthedocs.io/en/latest/">python-osc</a></code>
-                            </li>
-                            <li>
-                                JavaScript:
-                                <code><a href="https://www.npmjs.com/package/osc-js">osc-js</a></code>,
-                                <code><a href="https://www.npmjs.com/package/osc">osc</a></code>
-                            </li>
-                        </ul>
-                        </p>
-                    </div>
-                    <p class="fragment">We will use <code>python-osc</code> for our game later!</p>
-                </section>
-            </section>
+        </section>
+        <section>
+          <h3 class="r-fit-text"> Usage of OSC outside of SuperCollider </h3>
+          <hr>
+          <p>
+            OSC allows you to control the synthesizer server from a <b>different program</b>, or even a
+            <b>different machine</b>!
+          </p>
+          <div class="fragment">
+            <hr>
+            <p>
+              This includes but not limited to:
+            <ul>
+              <li>
+                Python:
+                <code><a href="https://python-osc.readthedocs.io/en/latest/">python-osc</a></code>
+              </li>
+              <li>
+                JavaScript:
+                <code><a href="https://www.npmjs.com/package/osc-js">osc-js</a></code>,
+                <code><a href="https://www.npmjs.com/package/osc">osc</a></code>
+              </li>
+            </ul>
+            </p>
+          </div>
+          <p class="fragment">We will use <code>python-osc</code> for our game later!</p>
+        </section>
+      </section>
 
-            <section id="step-9">
-                <section>
-                    <h2>
-                        Step 9
-                    </h2>
-                    <hr>
-                    <h2>
-                        <b> Extras </b>
-                    </h2>
+      <section id="step-9">
+        <section>
+          <h2>
+            Step 9
+          </h2>
+          <hr>
+          <h2>
+            <b> Extras </b>
+          </h2>
 
-                    <p class="fragment">Just a brief introduction to the <i>endless possibility</i><br> you can do with
-                        SuperCollider.</p>
-                </section>
-                <section>
-                    <h2><code>sclang</code></h2>
-                    <hr>
-                    <p>
-                        <code>sclang</code> is the SuperCollider language interpreter. It behaves similarly to Python.
-                    </p>
-                    <div class="fragment">
-                        <hr>
-                        <p>
-                            You can run <i>.scd</i> files using <code>sclang</code> on the terminal.
-                        </p>
-                        <pre><code>sclang mysynth.scd</code></pre>
-                    </div>
-                </section>
-                <section>
-                    <h2 class="r-fit-text">Load different SuperCollider files</h2>
-                    <hr>
-                    <p>
-                        You can also load multiple different files with SynthDefs.
-                    </p>
-                    <div class="fragment">
-                        <hr>
-                        <pre><code>"mySynth1.scd".load;
+          <p class="fragment">Just a brief introduction to the <i>endless possibility</i><br> you can do with
+            SuperCollider.</p>
+        </section>
+        <section>
+          <h2><code>sclang</code></h2>
+          <hr>
+          <p>
+            <code>sclang</code> is the SuperCollider language interpreter. It behaves similarly to Python.
+          </p>
+          <div class="fragment">
+            <hr>
+            <p>
+              You can run <i>.scd</i> files using <code>sclang</code> on the terminal.
+            </p>
+            <pre><code>sclang mysynth.scd</code></pre>
+          </div>
+        </section>
+        <section>
+          <h2 class="r-fit-text">Load different SuperCollider files</h2>
+          <hr>
+          <p>
+            You can also load multiple different files with SynthDefs.
+          </p>
+          <div class="fragment">
+            <hr>
+            <pre><code>"mySynth1.scd".load;
 "mySynth2.scd".load;</code></pre>
-                    </div>
-                </section>
-                <section>
-                    <h3>
-                        Loop, repeat, & <code>Routine</code>
-                    </h3>
-                    <hr>
-                    <p>
-                        You can set up repeated tasks in SuperCollider using
-                        <span class="r-fit-text">
-                            a <code>n.do()</code>,
-                            a <code>Routine</code>, <code>.loop</code>, or <code>.repeat()</code> methods.
-                        </span>
-                    </p>
-                    <pre>
+          </div>
+        </section>
+        <section>
+          <h3>
+            Loop, repeat, & <code>Routine</code>
+          </h3>
+          <hr>
+          <p>
+            You can set up repeated tasks in SuperCollider using
+            <span class="r-fit-text">
+              a <code>n.do()</code>,
+              a <code>Routine</code>, <code>.loop</code>, or <code>.repeat()</code> methods.
+            </span>
+          </p>
+          <pre>
 <code>20.do({ |i|
     i.postln; // print all numbers from 0 to 19
 });
@@ -1322,46 +1307,44 @@ MIDIFunc
                         Run the game from the command line with
                     </p>
                     <pre><code>(.venv) python game.py</code></pre>
-                    <hr>
-                    <p>
-                        Use arrow keys to move the running blobby. <br>
-                        Press <code>Space</code> to spin.
-                    </p>
-                </section>
-            </section>
+          <hr>
+          <p>
+            Use arrow keys to move the running blobby. <br>
+            Press <code>Space</code> to spin.
+          </p>
+        </section>
+      </section>
 
-            <section id="thank-you">
-                <section>
-                    <h2> Thank you for attending the workshop! </h2>
-                    <p> 🎉 🎉 🎉 </p>
-                    <blockquote class="fragment">
-                        Any questions?
-                    </blockquote>
-                </section>
-                <section>
-                    <h3>Curious to learn more about SuperCollider?</h3>
-                    <hr>
-                    <div class="r-stack r-stretch">
-                        <div class="fragment fade-out">
-                            <p>
-                                <a href="https://www.youtube.com/@elifieldsteel" target="_blank">
-                                    <img src="/media/EliFieldsteel.png" alt="Eli Fieldsteel YouTube Channel">
-                                    https://www.youtube.com/@elifieldsteel
-                                </a>
-                            </p>
-                        </div>
-                        <div class="fragment">
-                            <p>
-                                <a href="https://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC"
-                                    target="_blank">
-                                    <img src="/media/EliFieldsteel2.png" alt="Eli Fieldsteel YouTube Playlist">
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-            </section>
-        </div>
+      <section id="thank-you">
+        <section>
+          <h2> Thank you for attending the workshop! </h2>
+          <p> 🎉 🎉 🎉 </p>
+          <blockquote class="fragment">
+            Any questions?
+          </blockquote>
+        </section>
+        <section>
+          <h3>Curious to learn more about SuperCollider?</h3>
+          <hr>
+          <div class="r-stack r-stretch">
+            <div class="fragment fade-out">
+              <p>
+                <a href="https://www.youtube.com/@elifieldsteel" target="_blank">
+                  <img src="/media/EliFieldsteel.png" alt="Eli Fieldsteel YouTube Channel">
+                  https://www.youtube.com/@elifieldsteel
+                </a>
+              </p>
+            </div>
+            <div class="fragment">
+              <p>
+                <a href="https://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC" target="_blank">
+                  <img src="/media/EliFieldsteel2.png" alt="Eli Fieldsteel YouTube Playlist">
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
     </div>
+  </div>
 </body>
