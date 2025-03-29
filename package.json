@@ -2,10 +2,10 @@
   "name": "osc-workshop",
   "version": "1.0.1",
   "devDependencies": {
-    "vite": "^6.0.7"
+    "vite": "^6.2.3"
   },
   "dependencies": {
-    "reveal.js": "^5.1.0"
+    "reveal.js": "^5.2.1"
   },
   "scripts": {
     "dev": "vite",
